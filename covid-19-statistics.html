@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> COVID-19 Statistics</title>
+    <style>
+      .cssgardient{
+        
+  background: -webkit-linear-gradient( #1488cc, #2b32b2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+      }
+       .csstable{
+         background:linear-gradient(0deg, #FFFEFF 0%, #D7FFFE 100%);
+ 
+      }
+    </style>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -50,68 +62,68 @@ $('#loadingIndicator1').show();
 
               $("#date").html(
                 "Ngày " +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-primary'>" +
                   formattedDate +
                   " </span>có thông tin về dịch bệnh như sau: "
               );
 
               $("#lastUpdate").html(
                 "Cập nhật lần cuối vào: " +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-primary'>" +
                   response.data.last_update +
                   "</span>"
               );
               $("#confirmed").html(
-                "Tổng số ca nhiễm được xác nhận: <span class='fw-bold'>" +
+                "Tổng số ca nhiễm được xác nhận: <span class='fw-bold text-danger'>" +
                   response.data.confirmed +
                   "</span>"
               );
               $("#confirmed_diff").html(
                 ", Tăng thêm so với ngày trước: " +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-danger'>" +
                   response.data.confirmed_diff +
                   "</span>" +
                   " ca "
               );
               $("#deaths").html(
                 "<span>Tổng số ca tử vong: </span>" +
-                  "<span class='fw-bold'> " +
+                  "<span class='fw-bold text-danger'> " +
                   response.data.deaths +
                   "</span>"
               );
               $("#deaths_diff").html(
                 "<span>, Tăng thêm so với ngày trước: </span>" +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-danger'>" +
                   response.data.deaths_diff +
                   "</span>"
               );
               $("#recovered").html(
                 "<span>Tổng số ca đã phục hồi: </span>" +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-danger'>" +
                   response.data.recovered +
                   "</span>"
               );
               $("#recovered_diff").html(
                 "<span>, Tăng thêm so với ngày trước: </span>" +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-danger'>" +
                   response.data.recovered_diff +
                   "</span>"
               );
               $("#active").html(
                 "<span>Tổng số ca đang điều trị:  </span>" +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-danger'>" +
                   response.data.active +
                   "</span>"
               );
               $("#active_diff").html(
                 "<span>, Tăng thêm so với ngày trước:  </span>" +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-danger'>" +
                   response.data.active_diff +
                   "</span>"
               );
               $("#fatalityRate").html(
                 "<span>Tỉ lệ tử vong: </span>" +
-                  "<span class='fw-bold'>" +
+                  "<span class='fw-bold text-danger'>" +
                   response.data.fatality_rate * 100 +
                   "%</span>"
               );
@@ -272,54 +284,54 @@ $('#loadingIndicator').show();
                 var dataContainer = $("#dataContainer");
                 dataContainer.empty();
                 var html =
-                  "<table class='table table-hover table-bordered table-primary table-striped rounded my-5' style='width:100%;'><tr><thead class='table-dark'><th class='fs-4'>Khu Vực</th><th class='fs-4'>Thông tin</th></thead></tr>";
+                  "<table class='table table-hover table-bordered table-striped rounded my-5' style='width:100%;'><tr><thead class='table-dark'><th class='fs-4'>Khu Vực</th><th class='fs-4'>Thông tin</th></thead></tr>";
                 response.data.forEach(function (report) {
                   html +=
-                    "<tr><td class='fw-bold fs-4'>" +
+                    "<tr><td class='fw-bold fs-4 csstable'>" +
                     report.region.province +
                     "</td>";
                   html +=
-                    "<td>Ngày <span class='fw-bold'>" +
+                    "<td class='csstable'>Ngày <span class='fw-bold text-primary '>" +
                     report.date +
                     "</span> có thông tin về dịch bệnh như sau: ";
                   html +=
-                    "<br>Tổng số ca nhiễm được xác nhận: <span class='fw-bold'>" +
+                    "<br>Tổng số ca nhiễm được xác nhận: <span class='fw-bold text-danger'>" +
                     report.confirmed +
                     "</span>";
                   html +=
-                    ", Tăng thêm so với ngày trước: <span class='fw-bold'>" +
+                    ", Tăng thêm so với ngày trước: <span class='fw-bold text-danger'>" +
                     report.confirmed_diff +
                     "</span>";
                   html +=
-                    "<br>Tổng số ca tử vong: <span class='fw-bold'>" +
+                    "<br>Tổng số ca tử vong: <span class='fw-bold text-danger'>" +
                     report.deaths +
                     "</span>";
                   html +=
-                    ", Tăng thêm so với ngày trước:<span class='fw-bold'> " +
+                    ", Tăng thêm so với ngày trước:<span class='fw-bold text-danger'> " +
                     report.deaths_diff +
                     "</span>";
                   html +=
-                    "<br>Tổng số ca đã phục hồi:  <span class='fw-bold'>" +
+                    "<br>Tổng số ca đã phục hồi:  <span class='fw-bold text-danger'>" +
                     report.recovered +
                     "</span>";
                   html +=
-                    ", Tăng thêm so với ngày trước:  <span class='fw-bold'>" +
+                    ", Tăng thêm so với ngày trước:  <span class='fw-bold text-danger'>" +
                     report.recovered_diff +
                     "</span>";
                   html +=
-                    "<br>Cập nhật lần cuối vào:  <span class='fw-bold'>" +
+                    "<br>Cập nhật lần cuối vào:  <span class='fw-bold text-danger'>" +
                     report.last_update +
                     "</span>";
                   html +=
-                    "<br>Tổng số ca đang điều trị: <span class='fw-bold'>" +
+                    "<br>Tổng số ca đang điều trị: <span class='fw-bold text-danger'>" +
                     report.active +
                     "</span>";
                   html +=
-                    ", Tăng thêm so với ngày trước: <span class='fw-bold'>" +
+                    ", Tăng thêm so với ngày trước: <span class='fw-bold text-danger'>" +
                     report.active_diff +
                     "</span>";
                   html +=
-                    "<br>Tỉ lệ tử vong: <span class='fw-bold'>" +
+                    "<br>Tỉ lệ tử vong: <span class='fw-bold text-danger'>" +
                     report.fatality_rate * 100 +
                     "%</span></td></tr>";
                 });
@@ -331,55 +343,55 @@ $('#loadingIndicator').show();
                 var dataContainer = $("#dataContainer");
                 dataContainer.empty();
                 var html1 =
-                  "<table class='table table-hover table-primary table-bordered table-striped my-5' style='width:100%;'><thead class='table-dark'><tr><th class='fs-4'>Khu Vực</th><th class='fs-4'>Thông tin</th></thead></tr>";
+                  "<table class='table table-hover  table-bordered table-striped my-5' style='width:100%;'><thead class='table-dark'><tr><th class='fs-4'>Khu Vực</th><th class='fs-4'>Thông tin</th></thead></tr>";
                 response.data.forEach(function (report1) {
                   html1 +=
-                    "<tr><td class='fw-bold fs-4'>" +
+                    "<tr><td class='fw-bold fs-4 csstable'>" +
                     report1.region.province +
                     "</td>";
                   html1 +=
-                    "<td>Ngày <span class='fw-bold'>" +
+                    "<td class='csstable'>Ngày <span class='fw-bold text-primary'>" +
                     report1.date +
                     "</span> có thông tin về dịch bệnh như sau: ";
                   html1 +=
-                    "<br>Tổng số ca nhiễm được xác nhận: <span class='fw-bold'>" +
+                    "<br>Tổng số ca nhiễm được xác nhận: <span class='fw-bold text-danger'>" +
                     report1.confirmed +
                     "</span>";
                   html1 +=
-                    ", Tăng thêm so với ngày trước: <span class='fw-bold'>" +
+                    ", Tăng thêm so với ngày trước: <span class='fw-bold text-danger'>" +
                     report1.confirmed_diff +
                     "</span>";
                   html1 +=
-                    "<br>Tổng số ca tử vong: <span class='fw-bold'>" +
+                    "<br>Tổng số ca tử vong: <span class='fw-bold text-danger'>" +
                     report1.deaths +
                     "</span>";
                   html1 +=
-                    ", Tăng thêm so với ngày trước:<span class='fw-bold'> " +
+                    ", Tăng thêm so với ngày trước:<span class='fw-bold text-danger'> " +
                     report1.deaths_diff +
                     "</span>";
                   html1 +=
-                    "<br>Tổng số ca đã phục hồi:  <span class='fw-bold'>" +
+                    "<br>Tổng số ca đã phục hồi:  <span class='fw-bold text-danger'>" +
                     report1.recovered +
                     "</span>";
 
                   html1 +=
-                    ", Tăng thêm so với ngày trước:  <span class='fw-bold'>" +
+                    ", Tăng thêm so với ngày trước:  <span class='fw-bold text-danger'>" +
                     report1.recovered_diff +
                     "</span>";
                   html1 +=
-                    "<br>Cập nhật lần cuối vào:  <span class='fw-bold'>" +
+                    "<br>Cập nhật lần cuối vào:  <span class='fw-bold text-primary'>" +
                     report1.last_update +
                     "</span>";
                   html1 +=
-                    "<br>Tổng số ca đang điều trị: <span class='fw-bold'>" +
+                    "<br>Tổng số ca đang điều trị: <span class='fw-bold text-danger'>" +
                     report1.active +
                     "</span>";
                   html1 +=
-                    ", Tăng thêm so với ngày trước: <span class='fw-bold'>" +
+                    ", Tăng thêm so với ngày trước: <span class='fw-bold text-danger'>" +
                     report1.active_diff +
                     "</span>";
                   html1 +=
-                    "<br>Tỉ lệ tử vong: <span class='fw-bold'>" +
+                    "<br>Tỉ lệ tử vong: <span class='fw-bold text-danger'>" +
                     report1.fatality_rate * 100 +
                     "%</span></td></tr>";
                 });
@@ -391,33 +403,33 @@ $('#loadingIndicator').show();
                 var dataContainer = $("#dataContainer");
                 dataContainer.empty();
                 var html2 =
-                  "<table class='table table-hover table-primary table-border table-striped rounded my-5' style='width:100%;'><thead class='table-dark'><tr><th class='fs-4'>Thành phố</th><th class='fs-4'>Thông tin</th></thead></tr>";
+                  "<table class='table table-hover  table-border table-striped rounded my-5' style='width:100%;'><thead class='table-dark'><tr><th class='fs-4'>Thành phố</th><th class='fs-4'>Thông tin</th></thead></tr>";
                 response.data.forEach(function (report2) {
                   report2.region.cities.forEach(function (report3) {
                     html2 +=
-                      "<tr><td class='fw-bold fs-4'>" + report3.name + "</td>";
+                      "<tr><td class='fw-bold fs-4 csstable'>" + report3.name + "</td>";
                     html2 +=
-                      "<td>Ngày <span class='fw-bold'>" +
+                      "<td class='csstable'>Ngày <span class='fw-bold  text-primary'>" +
                       report3.date +
                       "</span> có thông tin về dịch bệnh như sau: ";
                     html2 +=
-                      "<br>Cập nhật lần cuối vào: <span class='fw-bold'>" +
+                      "<br>Cập nhật lần cuối vào: <span class='fw-bold  text-primary'>" +
                       report3.last_update +
                       "</span>";
                     html2 +=
-                      "<br>Tổng số ca nhiễm được xác nhận: <span class='fw-bold'>" +
+                      "<br>Tổng số ca nhiễm được xác nhận: <span class='fw-bold  text-danger'>" +
                       report3.confirmed +
                       "</span>";
                     html2 +=
-                      ", Tăng thêm so với ngày trước:   <span class='fw-bold'>" +
+                      ", Tăng thêm so với ngày trước:   <span class='fw-bold  text-danger'>" +
                       report3.confirmed_diff +
                       "</span>";
                     html2 +=
-                      "<br>Tổng số ca tử vong: <span class='fw-bold'>" +
+                      "<br>Tổng số ca tử vong: <span class='fw-bold  text-danger'>" +
                       report3.deaths +
                       "</span>";
                     html2 +=
-                      ", Tăng thêm so với ngày trước:<span class='fw-bold'> " +
+                      ", Tăng thêm so với ngày trước:<span class='fw-bold  text-danger'> " +
                       report3.deaths_diff +
                       "</span>";
 
@@ -440,7 +452,7 @@ $('#loadingIndicator').show();
     </script>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark" style="background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img
@@ -448,16 +460,16 @@ $('#loadingIndicator').show();
             alt="Logo"
             width="60"
             height="60"
-            class="d-inline-block align-text-top"
+            class="d-inline-block align-text-top rounded shadow"
           />
           <span class="fw-bold ms-2 fs-4">COVID-19 Statistics</span>
         </a>
       </div>
     </nav>
     <nav>
-      <div class="nav nav-tabs nav-pills nav-fill" id="nav-tab" role="tablist">
+      <div class="nav nav-tabs nav-pills nav-fill" id="nav-tab" role="tablist" style="background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898">
         <button
-          class="nav-link active"
+          class="nav-link active  text-light"
           id="nav-home-tab"
           data-bs-toggle="tab"
           data-bs-target="#nav-home"
@@ -465,11 +477,12 @@ $('#loadingIndicator').show();
           role="tab"
           aria-controls="nav-home"
           aria-selected="true"
+          
         >
           Tra Cứu Tình Hình COVID-19
         </button>
         <button
-          class="nav-link"
+          class="nav-link  text-light"
           id="nav-profile-tab"
           data-bs-toggle="tab"
           data-bs-target="#nav-profile"
@@ -491,12 +504,12 @@ $('#loadingIndicator').show();
         tabindex="0"
       >
         <div class="container">
-          <h2
-            class="text-center my-5 fw-bold"
+          <h1
+            class="text-center my-5 fw-bold cssgardient"
             style="font-family: 'Times New Roman', Times, serif"
           >
             Tra Cứu Tình Hình COVID-19 Trên Thế Giới
-          </h2>
+          </h1>
           <form id="dateForm" class="mt-3">
             <label for="dateInput" class="form-label">Chọn ngày:</label>
             <input
@@ -520,8 +533,25 @@ $('#loadingIndicator').show();
 </div>
 
           </form>
-
-          <div id="covidInfo" class="mt-3">
+             <table
+      class="table table-hover table-bordered  table-striped mb-5 my-4"
+      style="width: 100%"
+    >
+      <thead  class="table-dark">
+        <tr>
+         
+          <th class="text-center fs-5">Thông Tin</th>
+         
+         
+        </tr>
+      </thead>
+      <tbody >
+         <tr>
+         
+          <td class="csstable">
+         
+        
+        <div id="covidInfo" class="mt-3">
             <h id="date" class="fs-5"></h>
             <p id="lastUpdate" class="fs-5 mt-1"></p>
             <p class="fs-5">
@@ -538,6 +568,13 @@ $('#loadingIndicator').show();
             </p>
             <p id="fatalityRate" class="fs-5"></p>
           </div>
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+
+          
         </div>
       </div>
 
@@ -549,12 +586,12 @@ $('#loadingIndicator').show();
         tabindex="0"
       >
         <div class="container">
-          <h2
-            class="text-center my-5 fw-bold"
+          <h1
+            class="text-center my-5 fw-bold cssgardient"
             style="font-family: 'Times New Roman', Times, serif"
           >
             Tra Cứu Tình Hình COVID-19 Theo Khu Vực
-          </h2>
+          </h1>
           <form id="dateForm1" class="mt-3">
             <label for="dateInput1" class="form-label">Chọn ngày:</label>
             <input

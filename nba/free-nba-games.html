@@ -17,12 +17,23 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+      <style>
+      .csstable{
+       background:linear-gradient(0deg, #fffefe 0%, rgb(192, 248, 255) 100%);
+ 
+      }
+        .cssgardient {
+        background: -webkit-linear-gradient(#1488cc, #2b32b2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd">
+    <nav class="navbar navbar-expand-lg " style="background: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">
       <div class="container-fluid">
         <a
-          class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
+          class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row "
           href="./free-nba-teams.html"
           ><img
             src="../public/nba.jpg"
@@ -70,7 +81,7 @@
 
     <div class="container">
         <h1
-        class="text-center my-5 fw-bold"
+        class="text-center my-5 fw-bold cssgardient"
         style="font-family: 'Times New Roman', Times, serif"
       >
         Danh Sách Các Trận Đấu NBA
@@ -99,7 +110,7 @@
     <input id="myInput" type="text" placeholder="Search.." class=" form-control" />
 
              <table
-      class="table table-hover table-bordered table-light table-striped mb-5 mt-3"
+      class="table table-hover table-bordered  table-striped mb-5 mt-3"
       style="width: 100%"
     >
       <thead  class="table-dark">
@@ -164,16 +175,16 @@
 
             var newRow = `<tr>
             
-                <td >
-                  <span class='fw-bold fs-5'>${home_team_full_name} - ${visitor_team_full_name}</span><br>
+                <td class='csstable'>
+                  <span class='fw-bold fs-4 text-danger'>${home_team_full_name} - ${visitor_team_full_name}</span><br>
                   Điểm số: <span class='fw-bold'>${home_team_score} - ${visitor_team_score}</span><br>
-                  Ngày đấu: <span class='fw-bold'>${date}</span><br>
+                  Ngày đấu: <span class='fw-bold text-primary'>${date}</span><br>
                   Mùa: <span class='fw-bold'>${season}</span><br>
                   Trạng thái: <span class='fw-bold'>${status}</span><br>
                   Hiệp đấu: <span class='fw-bold'>${period}</span><br>
 
                 </td>
-                <td>
+                <td class='csstable'>
                   <span class='fw-bold fs-5'>${home_team_full_name}</span><br>
                   Điểm số: <span class='fw-bold'>${home_team_score}</span><br>
                     
@@ -182,7 +193,7 @@
                 Khu vực: <span class='fw-bold'>${home_team_division}</span><br>
                 Thành phố: <span class='fw-bold'>${home_team_city}</span><br></td>
                 
-                <td >
+                <td class='csstable'>
                     <span class='fw-bold fs-5'>${visitor_team_full_name}</span><br>
                      Điểm số: <span class='fw-bold'>${visitor_team_score}</span><br>
                   

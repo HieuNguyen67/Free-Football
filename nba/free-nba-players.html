@@ -17,9 +17,20 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+     <style>
+      .csstable{
+       background:linear-gradient(0deg, #fffefe 0%, rgb(192, 248, 255) 100%);
+ 
+      }
+        .cssgardient {
+        background: -webkit-linear-gradient(#1488cc, #2b32b2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd">
+    <nav class="navbar navbar-expand-lg" style="background: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">
       <div class="container-fluid">
         <a
           class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
@@ -70,7 +81,7 @@
 
     <div class="container">
       <h1
-        class="text-center my-5 fw-bold"
+        class="text-center my-5 fw-bold cssgardient"
         style="font-family: 'Times New Roman', Times, serif"
       >
         Danh Sách Các Cầu Thủ NBA
@@ -84,7 +95,7 @@
       />
   
       <table
-        class="table table-hover table-bordered table-light table-striped mb-3 mt-3"
+        class="table table-hover table-bordered table-striped mb-3 mt-3"
         style="width: 100%"
       >
         <thead class="table-dark">
@@ -144,10 +155,10 @@
               const team_tenviettat = player.team.abbreviation;
 
               var newRow = `<tr >
-              <td class='fw-bold'>${id}</td>
-              <td class='fw-bold fs-5'>${firstname}&nbsp;${lastname}</td>
-              <td class="lh-lg">
-                Vị trí chơi:<span class='fw-bold'> ${vitri}</span>
+              <td class='fw-bold csstable '>${id}</td>
+              <td class='fw-bold fs-5 csstable text-danger'>${firstname}&nbsp;${lastname}</td>
+              <td class="lh-lg csstable">
+                Vị trí chơi:<span class='fw-bold ' > ${vitri}</span>
                 , Chiều cao: <span  class='fw-bold'>${chieucao} (feet - inches)</span><br>
                 Cân nặng: <span  class='fw-bold'>${cannang} pounds</span>
                 , Số áo: <span  class='fw-bold'>${soao}</span><br>
@@ -158,7 +169,7 @@
                 , Số Draft: <span class='fw-bold'>${sodraft}</span>
 
               </td>
-              <td>
+              <td class='csstable'>
                   Tên đội bóng: <span class='fw-bold'>${team_name}</span><br>
                 Tên viết tắt: <span class='fw-bold'>${team_tenviettat}</span><br>
                 Liên đoàn: <span class='fw-bold'>${team_liendoan}</span><br>

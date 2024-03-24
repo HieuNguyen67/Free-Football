@@ -5,7 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Football Match Details</title>
+    <style>
+      .cssgardient {
+        background: -webkit-linear-gradient(#1488cc, #2b32b2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+       .csstable{
+       background:linear-gradient(0deg, #fffefe 0%, rgb(192, 248, 255) 100%);
+ 
+      }
+      .csstable1{
+       background:linear-gradient(0deg, #fffefe 0%, rgb(238, 255, 192) 100%);
+ 
+      }
+    </style>
     <script src="./js/jquery-3.7.1.min.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -19,7 +35,16 @@
     ></script>
   </head>
   <body>
-     <nav class="navbar navbar-dark bg-dark  ">
+    <nav
+      class="navbar navbar-dark bg-dark"
+      style="
+        background: radial-gradient(
+          circle 815px at 23.4% -21.8%,
+          rgba(9, 29, 85, 1) 0.2%,
+          rgba(0, 0, 0, 1) 100.2%
+        );
+      "
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="./football-video.html">
           <img
@@ -27,102 +52,102 @@
             alt="Logo"
             width="110"
             height="70"
-            class="d-inline-block align-text-top shadow "
+            class="d-inline-block align-text-top shadow rounded"
           />
           <span class="fw-bold ms-2 fs-4">Free Football (Soccer) Videos</span>
         </a>
       </div>
     </nav>
     <div class="container">
-         <h1
-            class="text-center my-5 fw-bold"
-            style="font-family: 'Times New Roman', Times, serif"
-          >
-           Xem Bóng Đá - Trực Tiếp Bóng Đá
-          </h1>
-        <label class="mt-5 fw-bold">Tìm kiếm:</label>
-    <input id="myInput" type="text" placeholder="Search.." class=" form-control" />
+      <h1
+        class="text-center my-5 fw-bold cssgardient"
+        style="font-family: 'Times New Roman', Times, serif"
+      >
+        Xem Bóng Đá - Trực Tiếp Bóng Đá
+      </h1>
+      <label class="mt-5 fw-bold">Tìm kiếm:</label>
+      <input
+        id="myInput"
+        type="text"
+        placeholder="Search.."
+        class="form-control"
+      />
 
-    <table
-      class="table table-hover table-bordered table-light table-striped mb-5 mt-3"
-      style="width: 100%"
-    >
-      <thead  class="table-dark">
-        <tr>
-          <th>Trận đấu</th>
-          <th>Ngày</th>
-          <th>Đội 1</th>
-          <th>Đội 2</th>
-          <th>Giải đấu</th>
-          <th>Video</th>
-        </tr>
-      </thead>
-      <tbody id="matchDetails"></tbody>
-    </table>
-    <script>
-      $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-          var value = $(this).val().toLowerCase();
-          $("#matchDetails tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-          });
-        });
-        const settings = {
-          async: true,
-          crossDomain: true,
-          url: "https://free-football-soccer-videos1.p.rapidapi.com/v1/",
-          method: "GET",
-          headers: {
-            "X-RapidAPI-Key":
-              "59cc4e63b3msh4d842910a03af33p1c1163jsn6fe5d033ef64",
-            "X-RapidAPI-Host": "free-football-soccer-videos1.p.rapidapi.com",
-          },
-        };
-
-        $.ajax(settings).done(function (response) {
-          console.log(response);
-          response.forEach(function (video) {
-            const title = video.title;
-
-            const dateObj = new Date(video.date);
-
-            const day = dateObj.getDate();
-            const month = dateObj.getMonth() + 1;
-            const year = dateObj.getFullYear();
-
-            const formattedDay = String(day).padStart(2, "0");
-            const formattedMonth = String(month).padStart(2, "0");
-
-            const formattedDate = `${formattedDay}/${formattedMonth}/${year}`;
-            const date = formattedDate;
-            const side1 = video.side1.name;
-            const linkside1=video.side1.url;
-             const linkside2=video.side2.url;
-            const side2 = video.side2.name;
-            const competition = video.competition.name;
-           
+      <table
+        class="table table-hover table-bordered  table-striped mb-5 mt-3"
+        style="width: 100%"
+      >
+        <thead class="table-dark">
+          <tr>
+          
             
+            <th>Đội 1</th>
+            <th>Đội 2</th>
+            <th>Thông tin trận đấu</th>
+            <th>Video</th>
+          </tr>
+        </thead>
+        <tbody id="matchDetails"></tbody>
+      </table>
+      <script>
+        $(document).ready(function () {
+          $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#matchDetails tr").filter(function () {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+          });
+          const settings = {
+            async: true,
+            crossDomain: true,
+            url: "https://free-football-soccer-videos1.p.rapidapi.com/v1/",
+            method: "GET",
+            headers: {
+              "X-RapidAPI-Key":
+                "59cc4e63b3msh4d842910a03af33p1c1163jsn6fe5d033ef64",
+              "X-RapidAPI-Host": "free-football-soccer-videos1.p.rapidapi.com",
+            },
+          };
 
-            var newRow = `<tr><td class='fw-bold fs-5'>${title}</td><td class='fw-bold'>${date}</td>
-                <td class='fw-bold'>${side1}<button class='btn  mt-3' style='background:linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);border:0px;'><a href='${linkside1}' target="_blank" class="text-decoration-none text-light">Xem tỉ số gần đây của<span class='fw-bold'> ${side1}</span></a></button></td>
-                <td class='fw-bold'>${side2}<button class='btn mt-3'  style='background:linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);border:0px;'><a href='${linkside2}' target="_blank" class="text-decoration-none text-light">Xem tỉ số gần đây của<span class='fw-bold'> ${side2}</span></a></button></td>
-                <td class='fw-bold'>${competition}</td>`;
-                newRow+=` <td class='fw-bold' style='width:20rem;height:20rem;'>`;
-                 video.videos.forEach(function (video1) {
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+            response.forEach(function (video) {
+              const title = video.title;
+
+              const dateObj = new Date(video.date);
+
+              const day = dateObj.getDate();
+              const month = dateObj.getMonth() + 1;
+              const year = dateObj.getFullYear();
+
+              const formattedDay = String(day).padStart(2, "0");
+              const formattedMonth = String(month).padStart(2, "0");
+
+              const formattedDate = `${formattedDay}/${formattedMonth}/${year}`;
+              const date = formattedDate;
+              const side1 = video.side1.name;
+              const linkside1 = video.side1.url;
+              const linkside2 = video.side2.url;
+              const side2 = video.side2.name;
+              const competition = video.competition.name;
+
+              var newRow = `<tr><td  colspan="6" class='text-center fs-4 fw-bold csstable1'>${title} <span class='text-primary'>(${date})</span></td></tr><tr>
+                <td class='fw-bold text-danger csstable col-2 '>${side1}<br><button class='btn  mt-3 col-12  py-4' style='background:linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);border:0px;'><a href='${linkside1}' target="_blank" class="text-decoration-none text-light">Xem các trận của<span class='fw-bold'> ${side1}</span></a></button></td>
+                <td class='fw-bold text-danger csstable col-2 '>${side2}<br><button class='btn mt-3 col-12 py-4'  style='background:linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);border:0px;'><a href='${linkside2}' target="_blank" class="text-decoration-none text-light">Xem các trận của<span class='fw-bold'> ${side2}</span></a></button></td>
+                <td class='csstable col-4 '>Trận: <span class='fw-bold'>${title}</span><br>Ngày: <span class='text-primary fw-bold'>(${date})</span><br>Giải đấu: <span class='fw-bold'>${competition}</span></td>`;
+              newRow += ` <td class='fw-bold csstable' style='width:20rem;height:20rem;'>`;
+              video.videos.forEach(function (video1) {
                 const title = video1.title;
-            const highlightsEmbed = video1.embed;
-           newRow+=`<span class='fw-bold fs-5'>${title}</span><br>${highlightsEmbed}`;
-              
-        
-               
-                });
-           newRow+=`</td></tr>`;
+                const highlightsEmbed = video1.embed;
+                newRow += `<span class='fw-bold fs-5 '>${title}</span><br>${highlightsEmbed}`;
+              });
+              newRow += `</td></tr>`;
 
-            $("#matchDetails").append(newRow);
+              $("#matchDetails").append(newRow);
+            });
           });
         });
-      });
-    </script>
+      </script>
     </div>
   </body>
 </html>

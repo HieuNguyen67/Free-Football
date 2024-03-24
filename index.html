@@ -20,33 +20,44 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+     <style>
+      .cssgardient {
+        background: -webkit-linear-gradient(#1488cc, #2b32b2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+        .csstable{
+       background:linear-gradient(0deg, #fffefe 0%, rgb(192, 255, 194) 100%);
+ 
+      }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd">
+    <nav class="navbar navbar-expand-lg" style="background: linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% );">
       <div class="container-fluid">
         <a
           class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-          href="./free-nba-teams.html"
+          href="./index.html"
           ><img
             src="./public/api.png"
             alt="Logo"
             width="60"
             height="60"
             class="d-inline-block align-text-top rounded "
-          /><span class="ms-3">LIST API </span>
+          /><span class="ms-3 text-light">LIST API </span>
         </a>
       </div>
     </nav>
     <div class="container">
         <h1
-        class="text-center my-5 fw-bold"
+        class="text-center my-5 fw-bold cssgardient"
         style="font-family: 'Times New Roman', Times, serif"
       >
         Danh Sách Các API
 
       </h1>
       <table
-      class="table table-hover table-bordered table-light table-striped mb-5 mt-3"
+      class="table table-hover table-bordered table-striped mb-5 mt-3"
       style="width: 100%"
     >
       <thead  class="table-dark">
@@ -60,43 +71,43 @@
       </thead>
       <tbody >
          <tr>
-        <td class="col-1"><img
+        <td class="col-1 csstable"><img
             src="./public/covid-19.png"
             alt="Logo"
             width="100"
             height="100"
             class="d-inline-block align-text-top rounded "
           /></td>
-          <td class="fw-bold fs-4">COVID-19 Statistics</td>
-          <td><a href="./covid-19-statistics.html"><button class="btn btn-primary col-12 py-3"  style="
+          <td class="fw-bold fs-4 csstable">COVID-19 Statistics</td>
+          <td class="csstable"><a href="./covid-19-statistics.html"><button class="btn btn-primary col-12 py-3"  style="
                 background: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
                 border: 0px;
               "><i class="fa-sharp fa-solid fa-right-to-bracket"></i>  &nbsp;COVID-19 Statistics</button></a></td>
           </tr>
           <tr>
-        <td class="col-1"><img
+        <td class="col-1 csstable"><img
             src="./public/football.jpg"
             alt="Logo"
             width="100"
             height="100"
             class="d-inline-block align-text-top rounded "
           /></td>
-          <td class="fw-bold fs-4">Free Football (Soccer) Videos</td>
-          <td><a href="./football-video.html"><button class="btn btn-primary col-12 py-3"  style="
+          <td class="fw-bold fs-4 csstable">Free Football (Soccer) Videos</td>
+          <td class="csstable"><a href="./football-video.html"><button class="btn btn-primary col-12 py-3"  style="
                 background: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
                 border: 0px;
               "><i class="fa-sharp fa-solid fa-right-to-bracket"></i>  &nbsp;Free Football (Soccer) Videos</button></a></td>
           </tr>
            <tr>
-        <td class="col-1"><img
+        <td class="col-1 csstable"><img
             src="./public/nba.jpg"
             alt="Logo"
             width="100"
             height="100"
             class="d-inline-block align-text-top rounded "
           /></td>
-          <td class="fw-bold fs-4">Free NBA</td>
-          <td><a href="./nba/free-nba-teams.html"><button class="btn btn-primary col-12 py-3"  style="
+          <td class="fw-bold fs-4 csstable">Free NBA</td>
+          <td class="csstable"><a href="./nba/free-nba-teams.html"><button class="btn btn-primary col-12 py-3"  style="
                 background: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
                 border: 0px;
               "><i class="fa-sharp fa-solid fa-right-to-bracket"></i>  &nbsp;Free NBA</button></a></td>
