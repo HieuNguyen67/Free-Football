@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Details</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="titleContainer"></div>
+    <div id="dateContainer"></div>
+    <div id="competitionContainer"></div>
+    <div id="title1Container"></div>
+      <div id="highlightsEmbedContainer"></div>
+
+    <script>
+      $(document).ready(function () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const title = urlParams.get("title");
+        const formattedDate = urlParams.get("date");
+        const competition = urlParams.get("competition");
+        const linkside1 = urlParams.get("linkside1");
+        const linkside2 = urlParams.get("linkside2");
+        const side1 = urlParams.get("side1");
+        const side2 = urlParams.get("side2");
+        const title1Params = urlParams.getAll("title1");
+        const highlightsEmbedParams = urlParams.getAll("highlightsEmbed");
+
+        console.log("Title1 Parameters:", title1Params);
+
+        var titletext = `<h1>Trận: ${title}</h1><br><span>Đội 1: ${side1}</span><br><a target='blank' href='${linkside1}'>Trận gần đây của ${side1}</a><br><span>Đội 2: ${side2}</span><br><a target='blank' href='${linkside2}'>Trận gần đây của ${side2}</a><br>
+       <span></span>`;
+
+        const title1Container = document.getElementById("title1Container");
+        title1Container.innerHTML = "<ul>";
+        title1Params.forEach((title1) => {
+          title1Container.innerHTML += `<li>${title1}</li>`;
+        });
+        title1Container.innerHTML += "</ul>";
+
+        const highlightsEmbedContainer = document.getElementById("highlightsEmbedContainer");
+        highlightsEmbedContainer.innerHTML = "<ul>";
+        highlightsEmbedParams.forEach((highlightsEmbed) => {
+          highlightsEmbedContainer.innerHTML += `<li class='col-4'>${highlightsEmbed}</li>`;
+        });
+        highlightsEmbedContainer.innerHTML += "</ul>";
+
+
+        const dateContainer = document.getElementById("dateContainer");
+        dateContainer.textContent = "Ngày: " + formattedDate;
+        const competitionContainer = document.getElementById(
+          "competitionContainer"
+        );
+        competitionContainer.textContent = "Giải đấu: " + competition;
+        $("#titleContainer").append(titletext);
+      });
+    </script>
+  </body>
+</html>

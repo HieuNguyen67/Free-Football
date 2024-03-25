@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'eFootball';
+    src: local('eFootball Stencil Regular'), local('eFootball-Stencil-Regular'),
+        url('./eFootballStencil-Regular.woff2') format('woff2'),
+        url('./eFootballStencil-Regular.woff') format('woff'),
+        url('./eFootballStencil-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  .fontEfootball{
+    font-family: 'eFootball';
+    
+
+  }
+  .yellow {
+       color: #ffff00;
+      }
+      .boxweb{
+        width: 100%;
+       
+     
+        background: #000096;
+      }
+.imgbackground{
+    /* backgroundImage: `url(${backgroundimgae})`,
+          backgroundPosition: " center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover", */
+          background-image: url(./public/barca.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          height: 30rem;
+}
