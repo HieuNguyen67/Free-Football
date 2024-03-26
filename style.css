@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'eFootball';
     src: local('eFootball Stencil Regular'), local('eFootball-Stencil-Regular'),
-        url('./eFootballStencil-Regular.woff2') format('woff2'),
-        url('./eFootballStencil-Regular.woff') format('woff'),
-        url('./eFootballStencil-Regular.ttf') format('truetype');
+        url('./fontEFootball/eFootballStencil-Regular.woff2') format('woff2'),
+        url('./fontEFootball/eFootballStencil-Regular.woff') format('woff'),
+        url('./fontEFootball/eFootballStencil-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
   }
@@ -11,6 +11,12 @@
     font-family: 'eFootball';
     
 
+  }
+  .blue{
+      color: #000096;
+  }
+  .pink{
+    color: #ff72bb;
   }
   .yellow {
        color: #ffff00;
@@ -22,13 +28,40 @@
         background: #000096;
       }
 .imgbackground{
-    /* backgroundImage: `url(${backgroundimgae})`,
-          backgroundPosition: " center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover", */
+  
           background-image: url(./public/barca.jpg);
           background-repeat: no-repeat;
           background-size: cover;
           width: 100%;
           height: 30rem;
 }
+.boxvs{
+  
+          background-image: url(./public/vs.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+          height: 30rem;
+}
+.boxcard{
+    background-image: url(./public/backgroundcard.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+         
+          width: 100%;
+          height: 23rem;
+
+}
+.center{
+  display: flex;
+  justify-content: center;
+  
+}
+ .cssgardient{
+  
+        
+  background: -webkit-linear-gradient( #B3FFAB, #12FFF7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+      }

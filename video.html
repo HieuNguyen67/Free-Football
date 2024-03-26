@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Details</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <script src="./js/jquery-3.7.1.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -19,11 +22,36 @@
     ></script>
   </head>
   <body>
-    <div id="titleContainer"></div>
-    <div id="dateContainer"></div>
-    <div id="competitionContainer"></div>
-    <div id="title1Container"></div>
-      <div id="highlightsEmbedContainer"></div>
+     <div class="boxweb">
+       <nav
+      class="navbar "
+      style="
+        background-color:#ffff00;
+      "
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./football-video.html">
+         
+          <p class="fw-bold ms-2 fontEfootball" style="font-size: 2.3rem;"><i class="fa-solid fa-futbol"></i> Free Football (Soccer) Videos</p>
+        </a>
+      </div>
+    </nav>
+    <div class="container">
+    <div class="boxvs mt-5 rounded-3 shadow">
+        <div id="competitionContainer" class="text-light center fs-3 fontEfootball pt-4"></div>
+        <div id="dateContainer" class="pink center fs-3 fontEfootball"></div>
+          <div id="titleContainer" class="yellow "></div>
+    
+  
+   
+
+    </div>
+     <div id="videoContainer"></div>
+    
+    
+
+      </div>
+      </div>
 
     <script>
       $(document).ready(function () {
@@ -40,23 +68,41 @@
         const highlightsEmbedParams = urlParams.getAll("highlightsEmbed");
 
         console.log("Title1 Parameters:", title1Params);
+        var titletext=`<div class='col-12 center fontEfootball cssgardient '>`;
+        for (let i = 0; i < title1Params.length; i++) {
+    titletext += `<span class='mx-1 fs-4'>-${title1Params[i]}-</span>`;
+    
+}
 
-        var titletext = `<h1>Trận: ${title}</h1><br><span>Đội 1: ${side1}</span><br><a target='blank' href='${linkside1}'>Trận gần đây của ${side1}</a><br><span>Đội 2: ${side2}</span><br><a target='blank' href='${linkside2}'>Trận gần đây của ${side2}</a><br>
+         titletext += `</div><div class='row d-flex flex-row mt-5 pt-3'>
+          <div class='col'>
+            <div ><span class='center fontEfootball' style='font-size:3rem;'>${side1}</span><br><span class='center'><a href='${linkside1}' target='blank' class='text-light text-decoration-none fontEfootball'><button class='btn text-light fs-5 ' style='background: linear-gradient(19deg, #000096 0%, #b721ff 100%);border:0px;'>Xem các trận gần đây của ${side1}</button></a></span></div>
+         </div>
+         
+          <div class='col'> <div ><span class='center fontEfootball'  style='font-size:3rem;'>${side2}</span><br><span class='center'><a href='${linkside2}' target='blank' class='text-light text-decoration-none fontEfootball'><button class='btn text-light fs-5' style='background: linear-gradient(19deg, #000096 0%, #b721ff 100%);border:0px;'>Xem các trận gần đây của ${side2}</button></a></span></div>
+</div>
+          </div>
        <span></span>`;
+       var video =`<div class='row d-flex flex-column pb-5 '><div class='pb-5'>
+        `;
 
-        const title1Container = document.getElementById("title1Container");
-        title1Container.innerHTML = "<ul>";
-        title1Params.forEach((title1) => {
-          title1Container.innerHTML += `<li>${title1}</li>`;
-        });
-        title1Container.innerHTML += "</ul>";
+       
+        for (let i = 0; i < title1Params.length; i++) {
+    video += `<div class='col center fontEfootball yellow my-2 pt-5' style='font-size:4.5rem; '>${title1Params[i]}</div>`;
+      video += `<div class='col my-3 ' > ${highlightsEmbedParams[i]}</div>`;
+}
+video +=`</div></div>`;
+ 
+        
+      
+       
 
-        const highlightsEmbedContainer = document.getElementById("highlightsEmbedContainer");
-        highlightsEmbedContainer.innerHTML = "<ul>";
-        highlightsEmbedParams.forEach((highlightsEmbed) => {
-          highlightsEmbedContainer.innerHTML += `<li class='col-4'>${highlightsEmbed}</li>`;
-        });
-        highlightsEmbedContainer.innerHTML += "</ul>";
+        // const highlightsEmbedContainer = document.getElementById("highlightsEmbedContainer");
+        // highlightsEmbedContainer.innerHTML = "<ul>";
+        // highlightsEmbedParams.forEach((highlightsEmbed) => {
+        //   highlightsEmbedContainer.innerHTML += `<li class='col-4'>${highlightsEmbed}</li>`;
+        // });
+        // highlightsEmbedContainer.innerHTML += "</ul>";
 
 
         const dateContainer = document.getElementById("dateContainer");
@@ -66,6 +112,7 @@
         );
         competitionContainer.textContent = "Giải đấu: " + competition;
         $("#titleContainer").append(titletext);
+         $("#videoContainer").append(video);
       });
     </script>
   </body>
