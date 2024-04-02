@@ -15,11 +15,15 @@
   .blue{
       color: #000096;
   }
+
   .pink{
     color: #ff72bb;
   }
   .yellow {
        color: #ffff00;
+      }
+       .csstable {
+        background: linear-gradient(0deg, #ffff00 0%, #ffff00 100%);
       }
       .boxweb{
         
@@ -48,9 +52,27 @@
           background-image: url(./public/brazil.jpg);
           background-repeat: no-repeat;
           background-size: cover;
-           background-position: center;
+                    background-position: center;
+
           width: 100%;
           height: 28rem;
+}
+.imgbackground2{
+  
+          background-image: url(./public/mess.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          height: 30rem;
+}
+.imgbackground3{
+  
+          background-image: url(./public/PES-WE2021SU_16-9_Layout_4Clubs.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          
+          width: 100%;
+          height: 30rem;
 }
 .boxvs{
   
