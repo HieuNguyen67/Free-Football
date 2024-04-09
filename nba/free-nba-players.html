@@ -184,16 +184,15 @@
           }); }
           fetchData(cursor);
 
-    // Pagination event handler
     $("#nextPage").on("click", function () {
-        cursor += 100; // Increase cursor by 25 for next page
-        fetchData(cursor); // Fetch data for the next page
+        cursor += 100; 
+        fetchData(cursor); 
     });
 
     $("#prevPage").on("click", function () {
         if (cursor >= 100) {
-            cursor -= 100; // Decrease cursor by 25 for previous page
-            fetchData(cursor); // Fetch data for the previous page
+            cursor -= 100; 
+            fetchData(cursor); 
         }
     });
         });

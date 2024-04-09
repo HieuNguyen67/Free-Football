@@ -43,7 +43,7 @@
               width="80"
               height="60"
               class="d-inline-block align-text-top rounded shadow"
-            /><span class="ms-3  mt-2">Free Football </span>
+            /><span class="ms-3 mt-2">Free Football </span>
           </a>
           <button
             class="navbar-toggler"
@@ -57,9 +57,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul
-              class="navbar-nav fs-5"
-            >
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a
                   class="nav-link"
@@ -69,14 +67,37 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./lichthidau.html">Lịch thi đấu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="./bangxephang.html"
-                  >Bảng xếp hạng</a
+                <a class="nav-link " href="./lichthidau.html"
+                  >Lịch thi đấu</a
                 >
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./bangxephang.html">Bảng xếp hạng</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="./news.html">Tin tức</a>
+              </li>
+             
+             
             </ul>
+             
+              <div class="d-flex">
+                <a  href="./login.html"><button class=" btn btn-dark" id="login-item"
+                  >Đăng nhập</button
+                ></a>
+                <a  href="./signup.html" class="ms-md-2"><button class=" btn btn-primary" id="signup-item" 
+                  >Đăng ký</button
+                ></a>
+                  <div >
+               <a class="nav-link"
+                  ><span id="welcome-msg" class="me-3" style="display: none"> Hello, <span id="username-display"></span
+                ></span><button class="btn btn-danger"  id="logout-btn" style="display: none">Đăng xuất</button></a
+                >
+              </div>
+              </div>
+             
+             
+             
           </div>
         </div>
       </nav>
@@ -158,6 +179,24 @@
 
         <script>
           $(document).ready(function () {
+             if (localStorage.getItem('loggedIn') === 'true') {
+      $('#login-item').hide();
+            $('#signup-item').hide();
+
+      $('#logout-btn').show();
+      $('#welcome-msg').show();
+      $('#username-display').text(localStorage.getItem('username'));
+    }
+      $("#logout-btn").click(function () {
+          localStorage.removeItem("loggedIn");
+          localStorage.removeItem("username");
+                              localStorage.removeItem("user_id");
+
+          $("#login-item").show();
+           $("#signup-item").show();
+          $("#logout-btn").hide();
+          $("#welcome-msg").hide();
+        });
             const settings = {
               async: true,
               crossDomain: true,

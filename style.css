@@ -105,3 +105,14 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
       }
+      .red{
+        background:  linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+        border:0px;
+      }
+      .bluegardient{
+        background:  linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        border: 0px;
+      }
+      .fonttime{
+        font-family: 'Times New Roman', Times, serif;
+      }
