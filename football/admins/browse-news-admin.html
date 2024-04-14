@@ -126,14 +126,10 @@
         });
         var currentUrl = window.location.href;
 
-        // Phân tích URL để lấy các phần tử của nó
         var url = new URL(currentUrl);
 
-        // Lấy giá trị của tham số từ URL
         var newsId = url.searchParams.get("news_id");
         console.log(newsId);
-
-        // Gửi yêu cầu để lấy chi tiết tin tức khi trang được load
         $.get(
           `http://localhost:5021/v1/api/admin/news/${newsId}`,
           function (data, status) {
@@ -178,7 +174,6 @@
         var url = new URL(currentUrl);
         var newsId = url.searchParams.get("news_id");
 
-        // Function to update news status
         function updateNewsStatus(newsId, status) {
           $.ajax({
             url: `http://localhost:5021/v1/api/admin/update-news-status/${newsId}`,
@@ -196,12 +191,10 @@
           });
         }
 
-        // Change news status when dropdown value changes
         $(document).on("change", ".status-select", function () {
           var newStatus = $(this).val();
         });
 
-        // Handle confirm button click
         $(document).on("click", ".confirm-button", function () {
           var newStatus = $(".status-select").val();
           updateNewsStatus(newsId, newStatus);

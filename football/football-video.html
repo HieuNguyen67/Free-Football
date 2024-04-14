@@ -34,20 +34,6 @@
   </head>
   <body>
     <div class="boxweb">
-   
-    <!-- <nav
-      class="navbar "
-      style="
-        background-color:#ffff00;
-      "
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="./football-video.html">
-         
-          <p class="fw-bold ms-2 fontEfootball" style="font-size: 2.3rem;"><i class="fa-solid fa-futbol"></i> Free Football (Soccer) Videos</p>
-        </a>
-      </div>
-    </nav> -->
       <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
           <a
@@ -105,9 +91,16 @@
                   >Đăng ký</button
                 ></a>
                  <div >
-               <a class="nav-link"
-                  ><span id="welcome-msg" class="me-3" style="display: none"> Hello, <span id="username-display"></span
-                ></span><button class="btn btn-danger"  id="logout-btn" style="display: none">Đăng xuất</button></a
+                <a class="nav-link"
+                  ><a href="./news-by-user.html" class="text-decoration-none text-dark"><span id="welcome-msg" class="me-3" style="display: none">
+                    Hello, <span id="username-display"></span></span
+                  ></a><button
+                    class="btn btn-danger"
+                    id="logout-btn"
+                    style="display: none"
+                  >
+                    Đăng xuất
+                  </button></a
                 >
               </div>
               </div>
@@ -142,20 +135,6 @@
     </div>
   </div>
 
-      <!-- <table
-        class="table table-hover table-bordered table-striped mb-5 mt-3"
-        style="width: 100%"
-      >
-        <thead class="table-dark">
-          <tr>
-            <th>Đội 1</th>
-            <th>Đội 2</th>
-            <th>Thông tin trận đấu</th>
-            <th>Video</th>
-          </tr>
-        </thead>
-        <tbody id="matchDetails"></tbody>
-      </table> -->
       <script>
     $(document).ready(function () {
         if (localStorage.getItem('loggedIn') === 'true') {
@@ -215,29 +194,6 @@
                 const competition = video.competition.name;
                 const thumbnail= video.thumbnail;
                 
-
-                // var newRow = `
-                // <tr>
-                //     <td class='fw-bold text-danger csstable col-2 '>${side1}<br><button class='btn  mt-3 col-12  py-4' style='background:linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);border:0px;'><a href='${linkside1}' target="_blank" class="text-decoration-none text-light">Xem các trận của<span class='fw-bold'> ${side1}</span></a></button></td>
-                //     <td class='fw-bold text-danger csstable col-2 '>${side2}<br><button class='btn mt-3 col-12 py-4'  style='background:linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);border:0px;'><a href='${linkside2}' target="_blank" class="text-decoration-none text-light">Xem các trận của<span class='fw-bold'> ${side2}</span></a></button></td>
-                //     <td class='csstable col-4 '>Trận: <span class='fw-bold'>${title}</span><br>Ngày: <span class='text-primary fw-bold'>(${date})</span><br>Giải đấu: <span class='fw-bold'>${competition}</span></td>
-                //     <td class='fw-bold csstable' style='width:20rem;height:20rem;'>`;
-                // var title1Params = [];
-                // var highlightsEmbedParams = [];
-                // video.videos.forEach(function (video1) {
-                //      title1Params.push(encodeURIComponent(video1.title));
-                //      highlightsEmbedParams.push(encodeURIComponent(video1.embed));
-                
-                //     newRow += `<span class='fw-bold fs-5 '>${video1.title}</span><br>${video1.embed}`;
-                // });
-                // var title1QueryParams = title1Params.map(title1 => `title1=${title1}`).join('&');
-                // var highlightsEmbedQueryParams = highlightsEmbedParams.map(highlightsEmbed => `highlightsEmbed=${highlightsEmbed}`).join('&');
-
-          
-                // newRow += `</td></tr>
-                // <tr>
-                //     <td colspan="4" class='text-center fs-4 fw-bold csstable1'><a href="./video.html?title=${encodeURIComponent(title)}&date=${encodeURIComponent(date)}&competition=${encodeURIComponent(competition)}&linkside1=${encodeURIComponent(linkside1)}&linkside2=${encodeURIComponent(linkside2)}&side1=${encodeURIComponent(side1)}&side2=${encodeURIComponent(side2)}&${title1QueryParams}&${highlightsEmbedQueryParams}" target='_blank' class="text-decoration-none text-dark">${title} <span class='text-primary'>(${date})</span></a></td>
-                // </tr>`;
                 var title1Params = [];
                 var title1 = [];
                 var highlightsEmbedParams = [];

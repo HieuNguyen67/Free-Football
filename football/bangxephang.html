@@ -57,7 +57,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a
                   class="nav-link"
@@ -67,37 +67,46 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="./lichthidau.html"
-                  >Lịch thi đấu</a
+                <a class="nav-link" href="./lichthidau.html">Lịch thi đấu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./bangxephang.html"
+                  >Bảng xếp hạng</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="./bangxephang.html">Bảng xếp hạng</a>
+                <a class="nav-link" href="./news.html">Tin tức</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link " href="./news.html">Tin tức</a>
-              </li>
-             
-             
             </ul>
-             
-              <div class="d-flex">
-                <a  href="./login.html"><button class=" btn btn-dark" id="login-item"
-                  >Đăng nhập</button
-                ></a>
-                <a  href="./signup.html" class="ms-md-2"><button class=" btn btn-primary" id="signup-item" 
-                  >Đăng ký</button
-                ></a>
-                  <div >
-               <a class="nav-link"
-                  ><span id="welcome-msg" class="me-3" style="display: none"> Hello, <span id="username-display"></span
-                ></span><button class="btn btn-danger"  id="logout-btn" style="display: none">Đăng xuất</button></a
+
+            <div class="d-flex">
+              <a href="./login.html"
+                ><button class="btn btn-dark" id="login-item">
+                  Đăng nhập
+                </button></a
+              >
+              <a href="./signup.html" class="ms-md-2"
+                ><button class="btn btn-primary" id="signup-item">
+                  Đăng ký
+                </button></a
+              >
+              <div>
+                <a class="nav-link"
+                  ><a
+                    href="./news-by-user.html"
+                    class="text-decoration-none text-dark"
+                    ><span id="welcome-msg" class="me-3" style="display: none">
+                      Hello, <span id="username-display"></span></span></a
+                  ><button
+                    class="btn btn-danger"
+                    id="logout-btn"
+                    style="display: none"
+                  >
+                    Đăng xuất
+                  </button></a
                 >
               </div>
-              </div>
-             
-             
-             
+            </div>
           </div>
         </div>
       </nav>
@@ -179,33 +188,34 @@
 
         <script>
           $(document).ready(function () {
-             if (localStorage.getItem('loggedIn') === 'true') {
-      $('#login-item').hide();
-            $('#signup-item').hide();
+            if (localStorage.getItem("loggedIn") === "true") {
+              $("#login-item").hide();
+              $("#signup-item").hide();
 
-      $('#logout-btn').show();
-      $('#welcome-msg').show();
-      $('#username-display').text(localStorage.getItem('username'));
-    }
-      $("#logout-btn").click(function () {
-          localStorage.removeItem("loggedIn");
-          localStorage.removeItem("username");
-                              localStorage.removeItem("user_id");
+              $("#logout-btn").show();
+              $("#welcome-msg").show();
+              $("#username-display").text(localStorage.getItem("username"));
+            }
+            $("#logout-btn").click(function () {
+              localStorage.removeItem("loggedIn");
+              localStorage.removeItem("username");
+              localStorage.removeItem("user_id");
 
-          $("#login-item").show();
-           $("#signup-item").show();
-          $("#logout-btn").hide();
-          $("#welcome-msg").hide();
-        });
+              $("#login-item").show();
+              $("#signup-item").show();
+              $("#logout-btn").hide();
+              $("#welcome-msg").hide();
+            });
             const settings = {
               async: true,
               crossDomain: true,
               url: "https://football-web-pages1.p.rapidapi.com/competitions.json",
               method: "GET",
               headers: {
-    'X-RapidAPI-Key': '59cc4e63b3msh4d842910a03af33p1c1163jsn6fe5d033ef64',
-    'X-RapidAPI-Host': 'football-web-pages1.p.rapidapi.com'
-  }
+                "X-RapidAPI-Key":
+                  "59cc4e63b3msh4d842910a03af33p1c1163jsn6fe5d033ef64",
+                "X-RapidAPI-Host": "football-web-pages1.p.rapidapi.com",
+              },
             };
 
             $.ajax(settings).done(function (response) {
@@ -232,9 +242,10 @@
                   selectLeague,
                 method: "GET",
                 headers: {
-    'X-RapidAPI-Key': '59cc4e63b3msh4d842910a03af33p1c1163jsn6fe5d033ef64',
-    'X-RapidAPI-Host': 'football-web-pages1.p.rapidapi.com'
-  }
+                  "X-RapidAPI-Key":
+                    "59cc4e63b3msh4d842910a03af33p1c1163jsn6fe5d033ef64",
+                  "X-RapidAPI-Host": "football-web-pages1.p.rapidapi.com",
+                },
               };
               $("#loadingIndicator1").show();
 

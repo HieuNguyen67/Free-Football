@@ -96,10 +96,10 @@
                 </button></a
               >
               <div>
-                <a class="nav-link"
-                  ><span id="welcome-msg" class="me-3" style="display: none">
+                  <a class="nav-link"
+                  ><a href="./news-by-user.html" class="text-decoration-none text-dark"><span id="welcome-msg" class="me-3" style="display: none">
                     Hello, <span id="username-display"></span></span
-                  ><button
+                  ></a><button
                     class="btn btn-danger"
                     id="logout-btn"
                     style="display: none"
@@ -135,19 +135,6 @@
           </button>
         </form>
         <form id="add-news-form" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-12">
-              <label for="title" class="yellow fs-5 fontEfootball"
-                >Tiêu đề:</label
-              ><br />
-              <input
-                type="text"
-                id="title"
-                name="title"
-                class="col-12 form-control mt-2"
-              />
-            </div>
-          </div>
           <div class="row mt-2">
             <div class="col-4">
               <label for="category" class="yellow fs-5 fontEfootball"
@@ -163,6 +150,20 @@
               </button>
             </div>
           </div>
+          <div class="row mt-2">
+            <div class="col-12">
+              <label for="title" class="yellow fs-5 fontEfootball"
+                >Tiêu đề:</label
+              ><br />
+              <input
+                type="text"
+                id="title"
+                name="title"
+                class="col-12 form-control mt-2"
+              />
+            </div>
+          </div>
+          
           <div>
             <label for="image" class="yellow fs-5 fontEfootball mt-3"
               >Ảnh tiêu đề:</label
@@ -175,7 +176,7 @@
             >Nội dung:</label
           ><br />
           <div style="background-color: white" class="mt-2">
-            <div id="editor" style="height: 20rem"></div>
+            <div id="editor" style="height: 30rem"></div>
             <input type="hidden" id="content" name="content" />
           </div>
 
@@ -219,16 +220,31 @@
           $("#logout-btn").hide();
           $("#welcome-msg").hide();
         });
-        var quill = new Quill("#editor", {
-          theme: "snow", // Use snow theme for the editor
-        });
+        var quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          ['bold', 'italic', 'underline', 'strike', 'color', 'background'],
+          [{ 'size': ['small', false, 'large', 'huge'] }, { 'font': [] }],
+          [{ 'align': [] }, { 'direction': 'rtl' }],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'indent': '-1'}, { 'indent': '+1' }],
+          ['blockquote', 'code-block'],
+          ['link', 'image', 'video', 'formula'],
+          [{ 'script': 'super'}, { 'script': 'sub' }],
+        ]
+      },
+      formats: [
+        'header', 'font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent', 'link', 'image', 'video', 'color', 'background', 'align',
+        'direction', 'code-block', 'formula', 'script'
+      ]
+    });
         $("#addnewcategory").click(function (event) {
           event.preventDefault();
 
           $("#add-category-form").show();
         });
 
-        // Handle form submission
         $.get(
           "http://localhost:5021/v1/api/admin/categories",
           function (data, status) {
@@ -249,12 +265,11 @@
           }
         );
 
-        // Handle form submission
         $("#add-news-form").submit(function (event) {
           event.preventDefault();
           var formData = new FormData(this);
           formData.set("content", quill.root.innerHTML);
-          formData.set("category_id", $("#category").val()); // Set category_id from selected option
+          formData.set("category_id", $("#category").val()); 
           var user_id = localStorage.getItem("user_id");
           console.log(user_id);
           if (!user_id) {
@@ -271,12 +286,11 @@
             contentType: false,
             success: function (response) {
               alert("News added successfully");
-              // Clear the form after successful submission
               $("#title").val("");
               $("#content").val("");
               $("#category").val("");
               $("#image").val("");
-              quill.root.innerHTML = ""; // Clear Quill editor content
+              quill.root.innerHTML = ""; 
             },
             error: function (xhr, status, error) {
               alert("Failed to add news");
@@ -298,7 +312,6 @@
             data: { name: categoryName },
             success: function (response) {
               alert("Category added successfully");
-              // Reset form after successful submission
               $("#categoryName").val("");
               location.reload();
             },

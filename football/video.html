@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Details</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
     <script src="../js/jquery-3.7.1.min.js"></script>
     <link
@@ -22,8 +25,8 @@
     ></script>
   </head>
   <body>
-     <div class="boxweb">
-       <!-- <nav
+    <div class="boxweb">
+      <!-- <nav
       class="navbar "
       style="
         background-color:#ffff00;
@@ -36,7 +39,7 @@
         </a>
       </div>
     </nav> -->
-    <nav class="navbar navbar-expand-lg" style="background: #ffff00">
+      <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
@@ -61,7 +64,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a
                   class="nav-link active"
@@ -71,77 +74,75 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="./lichthidau.html"
-                  >Lịch thi đấu</a
-                >
+                <a class="nav-link" href="./lichthidau.html">Lịch thi đấu</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./bangxephang.html">Bảng xếp hạng</a>
               </li>
-                <li class="nav-item">
-                <a class="nav-link " href="./news.html">Tin tức</a>
+              <li class="nav-item">
+                <a class="nav-link" href="./news.html">Tin tức</a>
               </li>
-             
-             
-             
             </ul>
-             
-              <div class="d-flex">
-                <a  href="./login.html"><button class=" btn btn-dark" id="login-item"
-                  >Đăng nhập</button
-                ></a>
-                <a  href="./signup.html" class="ms-md-2"><button class=" btn btn-primary" id="signup-item" 
-                  >Đăng ký</button
-                ></a>
-                 <div >
-               <a class="nav-link"
-                  ><span id="welcome-msg" class="me-3" style="display: none"> Hello, <span id="username-display"></span
-                ></span><button class="btn btn-danger"  id="logout-btn" style="display: none">Đăng xuất</button></a
+
+            <div class="d-flex">
+              <a href="./login.html"
+                ><button class="btn btn-dark" id="login-item">
+                  Đăng nhập
+                </button></a
+              >
+              <a href="./signup.html" class="ms-md-2"
+                ><button class="btn btn-primary" id="signup-item">
+                  Đăng ký
+                </button></a
+              >
+              <div>
+                 <a class="nav-link"
+                  ><a href="./news-by-user.html" class="text-decoration-none text-dark"><span id="welcome-msg" class="me-3" style="display: none">
+                    Hello, <span id="username-display"></span></span
+                  ></a><button
+                    class="btn btn-danger"
+                    id="logout-btn"
+                    style="display: none"
+                  >
+                    Đăng xuất
+                  </button></a
                 >
               </div>
-              </div>
-             
-             
-             
+            </div>
           </div>
         </div>
       </nav>
-     <div class="imgbackground1">
-    </div>
-    <div class="container">
-    <div class="boxvs mt-5 rounded-3 shadow">
-        <div id="competitionContainer" class="text-light center fs-3 fontEfootball pt-4"></div>
-        <div id="dateContainer" class="pink center fs-3 fontEfootball"></div>
-          <div id="titleContainer" class="yellow "></div>
-    
-  
-   
-
-    </div>
-     <div id="videoContainer"></div>
-    
-    
-
+      <div class="imgbackground1"></div>
+      <div class="container">
+        <div class="boxvs mt-5 rounded-3 shadow">
+          <div
+            id="competitionContainer"
+            class="text-light center fs-3 fontEfootball pt-4"
+          ></div>
+          <div id="dateContainer" class="pink center fs-3 fontEfootball"></div>
+          <div id="titleContainer" class="yellow"></div>
+        </div>
+        <div id="videoContainer"></div>
       </div>
-      </div>
+    </div>
 
     <script>
       $(document).ready(function () {
-          if (localStorage.getItem('loggedIn') === 'true') {
-      $('#login-item').hide();
-            $('#signup-item').hide();
+        if (localStorage.getItem("loggedIn") === "true") {
+          $("#login-item").hide();
+          $("#signup-item").hide();
 
-      $('#logout-btn').show();
-      $('#welcome-msg').show();
-      $('#username-display').text(localStorage.getItem('username'));
-    }
-      $("#logout-btn").click(function () {
+          $("#logout-btn").show();
+          $("#welcome-msg").show();
+          $("#username-display").text(localStorage.getItem("username"));
+        }
+        $("#logout-btn").click(function () {
           localStorage.removeItem("loggedIn");
           localStorage.removeItem("username");
-                              localStorage.removeItem("user_id");
+          localStorage.removeItem("user_id");
 
           $("#login-item").show();
-           $("#signup-item").show();
+          $("#signup-item").show();
           $("#logout-btn").hide();
           $("#welcome-msg").hide();
         });
@@ -158,13 +159,12 @@
         const highlightsEmbedParams = urlParams.getAll("highlightsEmbed");
 
         console.log("Title1 Parameters:", title1Params);
-        var titletext=`<div class='col-12 center fontEfootball cssgardient '>`;
+        var titletext = `<div class='col-12 center fontEfootball cssgardient '>`;
         for (let i = 0; i < title1Params.length; i++) {
-    titletext += `<span class='mx-1 fs-4'>★${title1Params[i]}★</span>`;
-    
-}
+          titletext += `<span class='mx-1 fs-4'>★${title1Params[i]}★</span>`;
+        }
 
-         titletext += `</div><div class='row d-flex flex-row mt-5 pt-3'>
+        titletext += `</div><div class='row d-flex flex-row mt-5 pt-3'>
           <div class='col'>
             <div ><span class='center fontEfootball' style='font-size:3rem;'>${side1}</span><br><span class='center'><a href='${linkside1}' target='blank' class='text-light text-decoration-none fontEfootball'><button class='btn text-light fs-5 ' style='background: linear-gradient(19deg, #000096 0%, #b721ff 100%);border:0px;'>Xem các trận gần đây của ${side1}</button></a></span></div>
          </div>
@@ -173,27 +173,14 @@
 </div>
           </div>
        <span></span>`;
-       var video =`<div class='row d-flex flex-column pb-5 '><div class='pb-5'>
+        var video = `<div class='row d-flex flex-column pb-5 '><div class='pb-5'>
         `;
 
-       
         for (let i = 0; i < title1Params.length; i++) {
-    video += `<div class='col center fontEfootball yellow my-2 pt-5' style='font-size:4.5rem; '>${title1Params[i]}</div>`;
-      video += `<div class='col my-3 shadow' > ${highlightsEmbedParams[i]}</div>`;
-}
-video +=`</div></div>`;
- 
-        
-      
-       
-
-        // const highlightsEmbedContainer = document.getElementById("highlightsEmbedContainer");
-        // highlightsEmbedContainer.innerHTML = "<ul>";
-        // highlightsEmbedParams.forEach((highlightsEmbed) => {
-        //   highlightsEmbedContainer.innerHTML += `<li class='col-4'>${highlightsEmbed}</li>`;
-        // });
-        // highlightsEmbedContainer.innerHTML += "</ul>";
-
+          video += `<div class='col center fontEfootball yellow my-2 pt-5' style='font-size:4.5rem; '>${title1Params[i]}</div>`;
+          video += `<div class='col my-3 shadow' > ${highlightsEmbedParams[i]}</div>`;
+        }
+        video += `</div></div>`;
 
         const dateContainer = document.getElementById("dateContainer");
         dateContainer.textContent = "Ngày: " + formattedDate;
@@ -202,7 +189,7 @@ video +=`</div></div>`;
         );
         competitionContainer.textContent = "Giải đấu: " + competition;
         $("#titleContainer").append(titletext);
-         $("#videoContainer").append(video);
+        $("#videoContainer").append(video);
       });
     </script>
   </body>
