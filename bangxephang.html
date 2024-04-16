@@ -36,7 +36,7 @@
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-            href="./football-video.html"
+            href="./index.html"
             ><img
               src="../public/eFootball-konami.jpg"
               alt="Logo"
@@ -59,10 +59,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  aria-current="page"
-                  href="./football-video.html"
+                <a class="nav-link" aria-current="page" href="./index.html"
                   >Highlights-Livestream</a
                 >
               </li>
@@ -85,7 +82,7 @@
                   Đăng nhập
                 </button></a
               >
-              <a href="./signup.html" class="ms-md-2"
+              <a href="./signup.html" class="ms-2"
                 ><button class="btn btn-primary" id="signup-item">
                   Đăng ký
                 </button></a
@@ -112,16 +109,13 @@
       </nav>
       <div class="imgbackground3"></div>
       <div class="container">
-        <p
-          class="text-center my-5 fw-bold yellow fontEfootball"
-          style="font-size: 3.5rem"
-        >
-          BẢNG XẾP HẠNG BÓNG ĐÁ
+        <p class="text-center my-5 fw-bold yellow sizetitle fontEfootball">
+          BXH BÓNG ĐÁ
         </p>
 
         <div class="container">
-          <form id="dateForm1" class="mt-5">
-            <div class="col pt-5">
+          <form id="dateForm1" class="mt-lg-5">
+            <div class="col pt-lg-5">
               <label class="form-label fs-4 yellow fontEfootball"
                 >Chọn Giải Đấu:
               </label>
@@ -134,7 +128,7 @@
 
             <button
               type="submit"
-              class="btn btn-dark mt-3 px-5 py-3 col-3 fs-5"
+              class="btn btn-dark mt-3 px-5 py-lg-3 col-lg-3 col-12 fs-5"
               style="
                 background: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
                 border: 0px;
@@ -148,40 +142,42 @@
           </div>
           <div id="titlegiai"></div>
           <div class="pb-5">
-            <table
-              style="width: 100%"
-              class="table table-hover table-bordered table-striped mt-3"
-            >
-              <thead class="table-dark">
-                <tr class="text-center">
-                  <th colspan="2">CLB</th>
-                  <th colspan="4">Sân Nhà</th>
-                  <th colspan="4">Sân Khách</th>
-                  <th colspan="8">Tổng Điểm</th>
-                </tr>
-                <tr class="text-center">
-                  <th colspan="2"></th>
+            <div class="table-responsive">
+              <table
+                style="width: 100%"
+                class="table table-hover table-bordered table-striped mt-3"
+              >
+                <thead class="table-dark">
+                  <tr class="text-center">
+                    <th colspan="2">CLB</th>
+                    <th colspan="4">Sân Nhà</th>
+                    <th colspan="4">Sân Khách</th>
+                    <th colspan="8">Tổng Điểm</th>
+                  </tr>
+                  <tr class="text-center">
+                    <th colspan="2"></th>
 
-                  <th>P</th>
-                  <th>W</th>
-                  <th>D</th>
-                  <th>L</th>
-                  <th>P</th>
-                  <th>W</th>
-                  <th>D</th>
-                  <th>L</th>
-                  <th>P</th>
-                  <th>W</th>
-                  <th>D</th>
-                  <th>L</th>
-                  <th>F</th>
-                  <th>A</th>
-                  <th>+/-</th>
-                  <th>Pts</th>
-                </tr>
-              </thead>
-              <tbody id="bangxephang"></tbody>
-            </table>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>F</th>
+                    <th>A</th>
+                    <th>+/-</th>
+                    <th>Pts</th>
+                  </tr>
+                </thead>
+                <tbody id="bangxephang"></tbody>
+              </table>
+            </div>
           </div>
           <div class="pb-5" id="details"></div>
         </div>
@@ -213,14 +209,12 @@
               method: "GET",
               headers: {
                 "X-RapidAPI-Key":
-                  "59cc4e63b3msh4d842910a03af33p1c1163jsn6fe5d033ef64",
+                  "54257c898cmshdeef5687f961bf7p1e7e75jsn1052eeb0c879",
                 "X-RapidAPI-Host": "football-web-pages1.p.rapidapi.com",
               },
             };
 
             $.ajax(settings).done(function (response) {
-              console.log(response);
-
               $.each(response.competitions, function (index, item) {
                 const fullname = item.full - name;
                 var option = $("<option>").val(item.id).text(item["full-name"]);
@@ -252,14 +246,13 @@
               $.ajax(settings)
                 .done(function (response) {
                   $("#loadingIndicator1").hide();
-                  console.log(response);
                   var dataContainer = $("#bangxephang");
                   dataContainer.empty();
                   var dataContainer1 = $("#details");
                   dataContainer1.empty();
                   var dataContainer2 = $("#titlegiai");
                   dataContainer2.empty();
-                  var title = `<p class='text-center yellow fontEfootball ' style="font-size: 3.5rem;">${response["league-table"].competition.name}</p>`;
+                  var title = `<p class='text-center yellow fontEfootball sizetitle mt-lg-0 mt-5' >${response["league-table"].competition.name}</p>`;
                   $("#titlegiai").append(title);
 
                   var detail = ` <div class="row d-flex ">
@@ -280,7 +273,7 @@
                     response["league-table"].teams.length > 0
                   ) {
                     response["league-table"].teams.forEach(function (item) {
-                      var newRow = `<tr class='fs-5 '>
+                      var newRow = `<tr class='sizetable '>
                         <td class='fw-bold csstable'>${item.position}</td>
                           <td class='fw-bold csstable'>${item.name}</td>
                           <td class='fw-bold csstable '><span class='blue'>${item["home-matches"].played}</span></td>

@@ -35,7 +35,7 @@
       "
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="./football-video.html">
+        <a class="navbar-brand" href="./index.html">
          
           <p class="fw-bold ms-2 fontEfootball" style="font-size: 2.3rem;"><i class="fa-solid fa-futbol"></i> Free Football (Soccer) Videos</p>
         </a>
@@ -45,7 +45,7 @@
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-            href="./football-video.html"
+            href="./index.html"
             ><img
               src="../public/eFootball-konami.jpg"
               alt="Logo"
@@ -71,7 +71,7 @@
                 <a
                   class="nav-link"
                   aria-current="page"
-                  href="./football-video.html"
+                  href="./index.html"
                   >Highlights-Livestream</a
                 >
               </li>
@@ -94,7 +94,7 @@
                  <a  href="./login.html"><button class=" btn btn-dark" id="login-item" 
                   >Đăng nhập</button
                 ></a>
-                 <a  href="./signup.html" class="ms-md-2"><button class=" btn btn-primary" id="signup-item" 
+                 <a  href="./signup.html" class="ms-2"><button class=" btn btn-primary" id="signup-item" 
                   >Đăng ký</button
                 ></a>
                  <div >
@@ -120,26 +120,24 @@
 
       <div class="container">
         <p
-          class="text-center my-5 fw-bold yellow fontEfootball"
-          style="font-size: 3.5rem"
+          class="text-center my-5 fw-bold yellow fontEfootball sizetitle"
+       
         >
           ĐĂNG NHẬP
         </p>
 
         <div class="container">
-          <!-- <input type="text" id="username" placeholder="Username" />
-          <input type="password" id="password" placeholder="Password" />
-          <button id="login-btn">Login</button> -->
+            <div id="error-message" class="text-center fs-5 mb-4 fontEfootball" style="color: yellow;display: none;"></div>
+
         <form id="login-form">
                       <div class="row d-flex flex-column pb-5">
-            <div class="col-4 mx-auto"> <label for="exampleFormControlInput1" class="form-label yellow">Username hoặc Email:</label><input type="text"id="usernameOrEmail" name="usernameOrEmail" placeholder="Username"  class="form-control mb-3"/></div>
-            <div class="col-4 mx-auto">  <label for="exampleFormControlInput1" class="form-label yellow">Password:</label><input type="password" id="password" name="password" placeholder="Password"  class="form-control mb-5"/></div>
-            <div class="col-4 mx-auto"><button  type="submit" class="btn col-12 mb-3 py-2 text-light" id="login-btn"  style='background: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);border:0px;'>Đăng nhập</button></div>
-               <div class="col-4 mx-auto"><a href="./football-video.html" class="text-decoration-none yellow"><p class=" text-center fw-bold">< Go back</span></a></div>
-           <div class="col-4 mx-auto"><hr class="text-light"></div>
-           <div class="col-4 mx-auto"><p class="text-center text-light pb-5 mb-5">Bạn không có tài khoản? <a href="./signup.html" class="text-decoration-none text-danger fw-bold">Đăng ký</a></p></div>
+            <div class="col-lg-4 col-12 mx-auto"> <label for="exampleFormControlInput1" class="form-label yellow fontEfootball">Username hoặc Email:</label><input type="text"id="usernameOrEmail" name="usernameOrEmail" placeholder="Username"  class="form-control mb-3"/></div>
+            <div class="col-lg-4 col-12 mx-auto">  <label for="exampleFormControlInput1" class="form-label yellow fontEfootball">Password:</label><input type="password" id="password" name="password" placeholder="Password"  class="form-control mb-lg-5 mb-4"/></div>
+            <div class="col-lg-4 col-12 mx-auto"><button  type="submit" class="btn col-12 mb-3 py-2 text-light " id="login-btn"  style='background: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);border:0px;'>Đăng nhập</button></div>
+               <div class="col-lg-4 col-12 mx-auto"><a href="./index.html" class="text-decoration-none yellow"><p class=" text-center fw-bold fontEfootball">< Go back</span></a></div>
+           <div class="col-lg-4 col-12 mx-auto"><hr class="text-light"></div>
+           <div class="col-lg-4 col-12 mx-auto"><p class="text-center text-light pb-5 mb-5 fontEfootball">Bạn không có tài khoản? <a href="./signup.html" class="text-decoration-none text-danger fw-bold ">Đăng ký</a></p></div>
 
-  <div id="error-message" style="color: yellow;display: none;"></div>
 </form>
 
 
@@ -157,7 +155,7 @@
           $("#username-display").text(localStorage.getItem("username"));
         }
         if (localStorage.getItem('loggedIn') === 'true') {
-      window.location.href = './football-video.html'; 
+      window.location.href = './index.html'; 
     }
 
   $('#login-form').submit(function(event) {
@@ -180,7 +178,7 @@
               $("#logout-btn").show();
               $("#welcome-msg").show();
               $("#username-display").text(response.username);
-          window.location.href = './football-video.html'; 
+          window.location.href = './index.html'; 
         },
         error: function(xhr, status, error) {
           const errorMessage = xhr.responseJSON.error;

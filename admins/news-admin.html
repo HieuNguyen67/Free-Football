@@ -32,7 +32,7 @@
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-            href="../football-video.html"
+            href="../index.html"
             ><img
               src="../../public/eFootball-konami.jpg"
               alt="Logo"
@@ -82,13 +82,15 @@
 
       <div class="container">
         <p
-          class="text-center my-5 fw-bold yellow fontEfootball"
-          style="font-size: 3.5rem"
+          class="text-center my-5 fw-bold yellow fontEfootball sizetitle"
+          
         >
           DUYỆT BÀI ĐĂNG TIN TỨC
         </p>
 
         <div class="container pb-5">
+                      <div class="table-responsive">
+
           <table
             style="width: 100%"
             class="table table-hover table-striped mt-3 py-5"
@@ -106,17 +108,13 @@
               </tr>
             </thead>
             <tbody id="news-list"></tbody>
-          </table>
+          </table></div>
 
-          <ul id=""></ul>
         </div>
       </div>
     </div>
     <script>
       $(document).ready(function () {
-        
-        console.log(localStorage.getItem("usernameadmin"));
-        console.log(localStorage.getItem("admin_id"));
         if (localStorage.getItem("loggedInAdmin") === "true") {
           $("#login-item").hide();
           $("#signup-item").hide();
@@ -138,7 +136,7 @@
           $("#logout-btn").hide();
           $("#welcome-msg").hide();
         });
-       
+
         $.get(
           "http://localhost:5021/v1/api/admin/news-with-images-all",
           function (data, status) {
@@ -152,7 +150,7 @@
                   listItem +=
                     '<img src="' +
                     news.image_blob +
-                    '" alt="News Image" style="width:100%;height:8rem;" >';
+                    '" alt="News Image"class="sizeimg">';
                 }
                 listItem += "</td>";
                 listItem += "<td class='col-2'><p>" + news.title;
@@ -162,8 +160,8 @@
                   news.content.length > maxLength
                     ? news.content.substring(0, maxLength) + " ..."
                     : news.content;
-                listItem += "<td class='col-2'><p>" + trimmedContent;
-                listItem += "</p></td>";
+                listItem += "<td class='col-2'>" + trimmedContent;
+                listItem += "</td>";
                 listItem += "<td><p>" + news.category_name;
                 listItem += "</p></td>";
                 listItem += "<td><p>" + news.user_name;
@@ -198,10 +196,14 @@
                   "</p></td>";
 
                 listItem +=
-                  "<td><a class='text-decoration-none text-dark fonttime fw-bold' href='./browse-news-admin.html?news_id="+
-                    news.news_id +
-                    "'>" +"<button class='btn red text-light'>Xem và duyệt bài";
-                listItem += "</button></a></td>";
+                  "<td><a class='text-decoration-none text-dark fonttime fw-bold' href='./browse-news-admin.html?news_id=" +
+                  news.news_id +
+                  "'>" +
+                  "<button class='btn red text-light'>Xem và duyệt bài";
+                listItem +=
+                  "</button></a><br><span class='fw-bold'>Ghi chú:</span><br><span class='text-danger fw-bold'>" +
+                  news.note +
+                  "</span> </td>";
 
                 listItem += "</tr>";
                 $("#news-list").append(listItem);

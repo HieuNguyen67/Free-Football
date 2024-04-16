@@ -33,7 +33,7 @@
       "
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="./football-video.html">
+        <a class="navbar-brand" href="./index.html">
          
           <p class="fw-bold ms-2 fontEfootball" style="font-size: 2.3rem;"><i class="fa-solid fa-futbol"></i> Free Football (Soccer) Videos</p>
         </a>
@@ -43,7 +43,7 @@
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-            href="./football-video.html"
+            href="./index.html"
             ><img
               src="../public/eFootball-konami.jpg"
               alt="Logo"
@@ -69,7 +69,7 @@
                 <a
                   class="nav-link active"
                   aria-current="page"
-                  href="./football-video.html"
+                  href="./index.html"
                   >Highlights-Livestream</a
                 >
               </li>
@@ -90,16 +90,19 @@
                   Đăng nhập
                 </button></a
               >
-              <a href="./signup.html" class="ms-md-2"
+              <a href="./signup.html" class="ms-2"
                 ><button class="btn btn-primary" id="signup-item">
                   Đăng ký
                 </button></a
               >
               <div>
-                 <a class="nav-link"
-                  ><a href="./news-by-user.html" class="text-decoration-none text-dark"><span id="welcome-msg" class="me-3" style="display: none">
-                    Hello, <span id="username-display"></span></span
-                  ></a><button
+                <a class="nav-link"
+                  ><a
+                    href="./news-by-user.html"
+                    class="text-decoration-none text-dark"
+                    ><span id="welcome-msg" class="me-3" style="display: none">
+                      Hello, <span id="username-display"></span></span></a
+                  ><button
                     class="btn btn-danger"
                     id="logout-btn"
                     style="display: none"
@@ -117,9 +120,12 @@
         <div class="boxvs mt-5 rounded-3 shadow">
           <div
             id="competitionContainer"
-            class="text-light center fs-3 fontEfootball pt-4"
+            class="text-light center text-center sizetextbox fontEfootball pt-lg-4 pt-2"
           ></div>
-          <div id="dateContainer" class="pink center fs-3 fontEfootball"></div>
+          <div
+            id="dateContainer"
+            class="pink center sizetextbox fontEfootball"
+          ></div>
           <div id="titleContainer" class="yellow"></div>
         </div>
         <div id="videoContainer"></div>
@@ -157,19 +163,25 @@
         const side2 = urlParams.get("side2");
         const title1Params = urlParams.getAll("title1");
         const highlightsEmbedParams = urlParams.getAll("highlightsEmbed");
-
-        console.log("Title1 Parameters:", title1Params);
         var titletext = `<div class='col-12 center fontEfootball cssgardient '>`;
         for (let i = 0; i < title1Params.length; i++) {
-          titletext += `<span class='mx-1 fs-4'>★${title1Params[i]}★</span>`;
+          titletext += `<span class='mx-1 sizetextbox'>★${title1Params[i]}★</span>`;
         }
 
-        titletext += `</div><div class='row d-flex flex-row mt-5 pt-3'>
-          <div class='col'>
-            <div ><span class='center fontEfootball' style='font-size:3rem;'>${side1}</span><br><span class='center'><a href='${linkside1}' target='blank' class='text-light text-decoration-none fontEfootball'><button class='btn text-light fs-5 ' style='background: linear-gradient(19deg, #000096 0%, #b721ff 100%);border:0px;'>Xem các trận gần đây của ${side1}</button></a></span></div>
+        titletext += `</div><div class='row d-flex flex-row mt-lg-5 mt-2 pt-3 pb-3'>
+          <div class='col-5 col-lg-6'>
+            <div ><span class='center fontEfootball text-center sizetitle1' >${side1}</span></div>
+         </div>
+          <div class='col-2 hide center text-center fs-5 fontEfootball text-light'>VS</div>
+         
+          <div class='col-5  col-lg-6'> <div ><span class='center text-center fontEfootball sizetitle1' >${side2}</span></div>
+</div>
+ <div class='col-lg-6 col-12 mt-lg-3 mt-4'>
+            <div ><span class='center '><a href='${linkside1}' target='blank' class='text-light col-12 col-lg-auto text-decoration-none fontEfootball'><button class='btn text-light sizetextbox col-12 ' style='background: linear-gradient(19deg, #000096 0%, #b721ff 100%);border:0px;'>Xem các trận gần đây của ${side1}</button></a></span></div>
          </div>
          
-          <div class='col'> <div ><span class='center fontEfootball'  style='font-size:3rem;'>${side2}</span><br><span class='center'><a href='${linkside2}' target='blank' class='text-light text-decoration-none fontEfootball'><button class='btn text-light fs-5' style='background: linear-gradient(19deg, #000096 0%, #b721ff 100%);border:0px;'>Xem các trận gần đây của ${side2}</button></a></span></div>
+         
+          <div class='col-lg-6 col-12 mt-lg-3 mt-2 '> <div ><span class='center  '><a href='${linkside2}' target='blank' class='text-light col-12 col-lg-auto text-decoration-none fontEfootball '><button class='btn text-light col-12  sizetextbox red' >Xem các trận gần đây của ${side2}</button></a></span></div>
 </div>
           </div>
        <span></span>`;
@@ -177,7 +189,7 @@
         `;
 
         for (let i = 0; i < title1Params.length; i++) {
-          video += `<div class='col center fontEfootball yellow my-2 pt-5' style='font-size:4.5rem; '>${title1Params[i]}</div>`;
+          video += `<div class='col center fontEfootball yellow my-2 pt-lg-5 sizetitle' >${title1Params[i]}</div>`;
           video += `<div class='col my-3 shadow' > ${highlightsEmbedParams[i]}</div>`;
         }
         video += `</div></div>`;

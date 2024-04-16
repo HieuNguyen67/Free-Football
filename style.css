@@ -12,6 +12,15 @@
    
 
   }
+  .ql-align-right {
+	text-align: right;
+}
+.ql-align-center {
+	text-align: center;
+}
+.ql-align-left {
+	text-align: left;
+}
   .blue{
       color: #000096;
   }
@@ -25,7 +34,7 @@
        .csstable {
         background: linear-gradient(0deg, #ffff00 0%, #ffff00 100%);
       }
-      .boxweb{
+      body{
         
     
        background-image: url(./public/efootball_bg_cl2.jpg);
@@ -36,10 +45,124 @@
            background-attachment: fixed;
 
           width: 100%;
-            
+       
+      
        
       }
-.imgbackground{
+
+.center{
+  display: flex;
+  justify-content: center;
+
+  
+}
+ .cssgardient{
+  
+        
+  background: -webkit-linear-gradient( #B3FFAB, #12FFF7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+      }
+      .red{
+        background:  linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+        border:0px;
+      }
+      .bluegardient{
+        background:  linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        border: 0px;
+      }
+      .fonttime{
+        font-family: 'Times New Roman', Times, serif;
+      }
+@media (max-width: 992px) {
+  .imgbackground{
+  
+          background-image: url(./public/barca.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          height: 10rem;
+}
+.imgbackground1{
+  
+          background-image: url(./public/brazil.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+                    background-position: center;
+
+          width: 100%;
+          height: 10rem;
+}
+.imgbackground2{
+  
+          background-image: url(./public/mess.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          height: 10rem;
+}
+.imgbackground3{
+  
+          background-image: url(./public/PES-WE2021SU_16-9_Layout_4Clubs.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          
+          width: 100%;
+          height: 10rem;
+}
+.sizetitle{
+  font-size: 2rem;
+}
+.sizetitle1{
+  font-size: 1.3rem;
+}
+.sizetextbox{
+  font-size: 1rem;
+}
+.boxcard{
+    background-image: url(./public/backgroundcard.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+         
+          width: 100%;
+ 
+
+}
+.boxvs{
+  
+          background-image: url(./public/pngtree-hexagonal-abstract-background-with-a-black-textured-surface-image_13704307.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+         
+}
+  .sizeimg{
+  width: 6rem;
+  height: 6rem;
+}
+
+.hidesm{
+  display: none;
+}
+
+ 
+}
+
+@media (min-width: 992px) {
+  .sizeimg{
+  width: 100%;
+  height: 8rem;
+}
+  .hide{
+    display: none;
+  }
+  .sizetextbox{
+  font-size: 1.5rem;
+}
+
+  .imgbackground{
   
           background-image: url(./public/barca.jpg);
           background-repeat: no-repeat;
@@ -92,27 +215,13 @@
           height: 23rem;
 
 }
-.center{
-  display: flex;
-  justify-content: center;
-
-  
+.sizetitle{
+  font-size: 3.5rem;
 }
- .cssgardient{
-  
-        
-  background: -webkit-linear-gradient( #B3FFAB, #12FFF7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-      }
-      .red{
-        background:  linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
-        border:0px;
-      }
-      .bluegardient{
-        background:  linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-        border: 0px;
-      }
-      .fonttime{
-        font-family: 'Times New Roman', Times, serif;
-      }
+.sizetitle1{
+  font-size: 3.5rem;
+}
+.sizetable{
+  font-size: 1.2rem;
+}
+}

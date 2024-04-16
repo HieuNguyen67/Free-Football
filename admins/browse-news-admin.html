@@ -6,7 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Football Match Details</title>
     <link rel="stylesheet" href="../../style.css" />
-    <style></style>
+     <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <style>
+        .imglogo {
+        height: 60px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+  margin-left: auto;
+  margin-right: auto;
+        
+      }
+  
+    </style>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -32,13 +51,12 @@
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-            href="../football-video.html"
+            href="../index.html"
             ><img
               src="../../public/eFootball-konami.jpg"
               alt="Logo"
               width="80"
-              height="60"
-              class="d-inline-block align-text-top rounded shadow"
+              class="d-inline-block align-text-top rounded shadow imglogo"
             /><span class="ms-3 mt-2">Admin </span>
           </a>
           <button
@@ -83,15 +101,33 @@
       <div class="container">
         <div class="container pb-5 mt-5">
           <div class="row my-3">
-            <div class="col-2">
-              <select class="status-select form-select col-2">
+            <div class="col-lg-2 col-12">
+              <label for="title" class="yellow fs-5 fontEfootball"
+                >Duyệt bài:</label
+              ><br />
+              <select class="status-select form-select col-lg-2 col-12">
                 <option value="pending">Pending</option>
                 <option value="approved">Approved</option>
                 <option value="rejected">Rejected</option>
               </select>
             </div>
-            <div class="col-2"><button class="btn red confirm-button text-light">Xác nhận</button></div>
-            
+            <div class="col-12 mt-3">
+              <label for="title" class="yellow fs-5 fontEfootball"
+                >Ghi chú:</label
+              ><br />
+              <textarea
+                type="text"
+                id="note-input"
+                name="note"
+                class="col-12 form-control mt-2"
+                style="height: 10rem"
+              ></textarea>
+            </div>
+            <div class="col-lg-2 col-12 mt-3">
+              <button class="btn col-12 col-lg-auto red confirm-button text-light py-lg-3 py-2 px-3">
+                Xác nhận
+              </button>
+            </div>
           </div>
           <div class="py-4 rounded" style="background: white">
             <div class="container" id="news-detail"></div>
@@ -101,8 +137,6 @@
     </div>
     <script>
       $(document).ready(function () {
-        console.log(localStorage.getItem("usernameadmin"));
-        console.log(localStorage.getItem("admin_id"));
         if (localStorage.getItem("loggedInAdmin") === "true") {
           $("#login-item").hide();
           $("#signup-item").hide();
@@ -129,7 +163,6 @@
         var url = new URL(currentUrl);
 
         var newsId = url.searchParams.get("news_id");
-        console.log(newsId);
         $.get(
           `http://localhost:5021/v1/api/admin/news/${newsId}`,
           function (data, status) {
@@ -173,20 +206,31 @@
         var currentUrl = window.location.href;
         var url = new URL(currentUrl);
         var newsId = url.searchParams.get("news_id");
+        $.get(
+          `http://localhost:5021/v1/api/admin/news/${newsId}`,
+          function (data, status) {
+            if (status === "success") {
+              $("#note-input").val(data[0].note);
+              $(".status-select").val(data[0].status);
+            } else {
+              console.error("Failed to fetch news details");
+            }
+          }
+        );
 
-        function updateNewsStatus(newsId, status) {
+        function updateNewsStatus(newsId, status, note) {
           $.ajax({
             url: `http://localhost:5021/v1/api/admin/update-news-status/${newsId}`,
             type: "PUT",
-            data: JSON.stringify({ status: status }),
+            data: JSON.stringify({ status: status, note: note }),
             contentType: "application/json",
             success: function (response) {
-              console.log("Updated news status successfully!");
               alert("Cập nhật thành công !");
               window.location.href = "./news-admin.html";
             },
             error: function (xhr, status, error) {
-              console.error("Failed to update news status:", error);
+              console.error("Failed to update news status and note:", error);
+              alert("Cập nhật thất bại !");
             },
           });
         }
@@ -197,7 +241,9 @@
 
         $(document).on("click", ".confirm-button", function () {
           var newStatus = $(".status-select").val();
-          updateNewsStatus(newsId, newStatus);
+          var note = $("#note-input").val();
+
+          updateNewsStatus(newsId, newStatus, note);
         });
       });
     </script>

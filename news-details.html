@@ -25,33 +25,29 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <style>
+      .imglogo {
+        height: 60px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        
+      }
+    </style>
   </head>
   <body>
     <div class="boxweb">
-      <!-- <nav
-      class="navbar "
-      style="
-        background-color:#ffff00;
-      "
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="./football-video.html">
-         
-          <p class="fw-bold ms-2 fontEfootball" style="font-size: 2.3rem;"><i class="fa-solid fa-futbol"></i> Free Football (Soccer) Videos</p>
-        </a>
-      </div>
-    </nav> -->
       <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-            href="./football-video.html"
+            href="./index.html"
             ><img
               src="../public/eFootball-konami.jpg"
               alt="Logo"
               width="80"
-              height="60"
-              class="d-inline-block align-text-top rounded shadow"
+              class="d-inline-block align-text-top rounded shadow imglogo"
             /><span class="ms-3 mt-2">Free Football </span>
           </a>
           <button
@@ -68,10 +64,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  aria-current="page"
-                  href="./football-video.html"
+                <a class="nav-link" aria-current="page" href="./index.html"
                   >Highlights-Livestream</a
                 >
               </li>
@@ -92,16 +85,19 @@
                   Đăng nhập
                 </button></a
               >
-              <a href="./signup.html" class="ms-md-2"
+              <a href="./signup.html" class="ms-2"
                 ><button class="btn btn-primary" id="signup-item">
                   Đăng ký
                 </button></a
               >
               <div>
-                  <a class="nav-link"
-                  ><a href="./news-by-user.html" class="text-decoration-none text-dark"><span id="welcome-msg" class="me-3" style="display: none">
-                    Hello, <span id="username-display"></span></span
-                  ></a><button
+                <a class="nav-link"
+                  ><a
+                    href="./news-by-user.html"
+                    class="text-decoration-none text-dark"
+                    ><span id="welcome-msg" class="me-3" style="display: none">
+                      Hello, <span id="username-display"></span></span></a
+                  ><button
                     class="btn btn-danger"
                     id="logout-btn"
                     style="display: none"
@@ -115,25 +111,28 @@
         </div>
       </nav>
       <div class="container pb-5">
-        <p
-          class="text-center my-5 fw-bold yellow fontEfootball"
-          style="font-size: 3.5rem"
-        >
-          TIN TỨC BÓNG ĐÁ
-        </p>
-        <p class="text-end">
-          <a href="./addnews.html"
-            ><button class="btn red text-light py-3 col-2">
-              <i class="fa-solid fa-pen-to-square"></i> Đăng Bài
-            </button></a
-          >
+        <p class="yellow fontEfootball mt-4 mb-4">
+          <a href="./index.html" class="text-decoration-none yellow"
+            >Trang chủ</a
+          ><span
+            >&nbsp;>&nbsp;<a
+              href="./news.html"
+              class="text-decoration-none yellow"
+              >Tin tức</a
+            ></span
+          >&nbsp;>&nbsp;<span id="cate"></span>
         </p>
 
-        <div
-          class="container py-4 rounded"
-          style="background: white; width: 100%"
-        >
-          <ul id="news-list"></ul>
+        <div class="row">
+          <div class="col-9 container py-4 rounded" style="background: white">
+            <div class="container" id="news-detail"></div>
+          </div>
+          <div class="col-3 container">
+            <div style="background: white" class="rounded container">
+              <p class="fw-bold fs-5 fonttime pt-3">Tin khác:</p>
+              <div id="news-list"></div>
+            </div>
+          </div>
         </div>
       </div>
       <script>
@@ -156,41 +155,76 @@
             $("#logout-btn").hide();
             $("#welcome-msg").hide();
           });
+          var currentUrl = window.location.href;
+
+          var url = new URL(currentUrl);
+
+          var newsId = url.searchParams.get("news_id");
+
+          $.get(
+            `http://localhost:5021/v1/api/admin/news/${newsId}`,
+            function (data, status) {
+              if (status === "success") {
+                var newsDetails =
+                  '<h1 class="fw-bold fonttime">' + data[0].title + "</h1>";
+                var date = new Date(data[0].created_at);
+                var day = ("0" + date.getDate()).slice(-2);
+                var month = ("0" + (date.getMonth() + 1)).slice(-2);
+                var year = date.getFullYear();
+                var formattedDate = day + "/" + month + "/" + year;
+                newsDetails +=
+                  "<p class='text-success fw-bold'><i class='fa-regular fa-clock'></i> " +
+                  formattedDate;
+                newsDetails +=
+                  "<span  class='text-primary fw-bold'><i class='fa-solid fa-pen-to-square ms-3'></i> " +
+                  data[0].user_name +
+                  "</span><hr>";
+                newsDetails += "</p>";
+                if (data[0].image_blob) {
+                  newsDetails +=
+                    '<p class="text-center"><img src="' +
+                    data[0].image_blob +
+                    '" alt="Image" " style="width:40rem;"/></p>';
+                }
+
+                newsDetails += "<p class='mt-4 '>" + data[0].content + "</p>";
+                var newsDetailss = "<span>" + data[0].category_name + "</span>";
+
+                $("#news-detail").html(newsDetails);
+                $("#cate").html(newsDetailss);
+              } else {
+                console.error("Failed to fetch news details");
+              }
+            }
+          );
+        });
+      </script>
+      <script>
+        $(document).ready(function () {
           $.get(
             "http://localhost:5021/v1/api/admin/news-with-images",
             function (data, status) {
               if (status === "success") {
                 var newsList = data;
                 newsList.forEach(function (news) {
-                  var listItem = "";
-
-                  listItem += '<div class="row mb-4">';
-                  listItem += '<div class="col-3">';
+                  var listItem =
+                    "<a class='text-decoration-none text-dark' href='./news-details.html?news_id=" +
+                    news.news_id +
+                    "'>";
                   if (news.image_blob) {
                     listItem +=
                       '<img src="' +
                       news.image_blob +
                       '" alt="News Image" style="width:100%;height:10rem;" >';
                   }
-                  listItem += "</div>";
-                  listItem += '<div class="col-9">';
+
                   listItem +=
-                    '<h3><a class="text-decoration-none text-dark fonttime fw-bold" href="./news-details.html?news_id=' +
+                    '<p class="fonttime mt-2 fw-bold"><a class="text-decoration-none text-dark" href="./news-details.html?news_id=' +
                     news.news_id +
                     '">' +
                     news.title +
-                    "</a></h3>";
-                  var maxLength = 147;
-                  var trimmedContent =
-                    news.content.length > maxLength
-                      ? news.content.substring(0, maxLength) + " ..."
-                      : news.content;
-                  listItem +=
-                    "<a class='text-decoration-none text-dark fonttime fw-bold' href='./news-details.html?news_id=" +
-                    news.news_id +
-                    "'>";
-                  listItem += "<p>" + trimmedContent + "</p>";
-                  listItem += "</a>";
+                    "</a></p>";
+
                   var date = new Date(news.created_at);
 
                   var day = ("0" + date.getDate()).slice(-2);
@@ -199,13 +233,12 @@
                   var formattedDate = day + "/" + month + "/" + year;
 
                   listItem +=
-                    "<p class='fw-bold'>Ngày đăng: " +
+                    "<p class='text-primary text-success fw-bold'><i class='fa-regular fa-clock'></i> " +
                     formattedDate +
                     "</p>";
-                  listItem += "</div>";
 
-                  listItem += "</div><hr>";
-
+                  listItem += "</a>";
+                  listItem += "<hr>";
                   $("#news-list").append(listItem);
                 });
               } else {

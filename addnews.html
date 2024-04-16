@@ -41,7 +41,7 @@
         <div class="container-fluid">
           <a
             class="navbar-brand fs-3 fw-bold ms-3 d-flex flex-row"
-            href="./football-video.html"
+            href="./index.html"
             ><img
               src="../public/eFootball-konami.jpg"
               alt="Logo"
@@ -64,10 +64,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  aria-current="page"
-                  href="./football-video.html"
+                <a class="nav-link" aria-current="page" href="./index.html"
                   >Highlights-Livestream</a
                 >
               </li>
@@ -75,11 +72,9 @@
                 <a class="nav-link" href="./lichthidau.html">Lịch thi đấu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="./bangxephang.html"
-                  >Bảng xếp hạng</a
-                >
+                <a class="nav-link" href="./bangxephang.html">Bảng xếp hạng</a>
               </li>
-               <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link active" href="./news.html">Tin tức</a>
               </li>
             </ul>
@@ -90,16 +85,19 @@
                   Đăng nhập
                 </button></a
               >
-              <a href="./signup.html" class="ms-md-2"
+              <a href="./signup.html" class="ms-2"
                 ><button class="btn btn-primary" id="signup-item">
                   Đăng ký
                 </button></a
               >
               <div>
-                  <a class="nav-link"
-                  ><a href="./news-by-user.html" class="text-decoration-none text-dark"><span id="welcome-msg" class="me-3" style="display: none">
-                    Hello, <span id="username-display"></span></span
-                  ></a><button
+                <a class="nav-link"
+                  ><a
+                    href="./news-by-user.html"
+                    class="text-decoration-none text-dark"
+                    ><span id="welcome-msg" class="me-3" style="display: none">
+                      Hello, <span id="username-display"></span></span></a
+                  ><button
                     class="btn btn-danger"
                     id="logout-btn"
                     style="display: none"
@@ -163,7 +161,7 @@
               />
             </div>
           </div>
-          
+
           <div>
             <label for="image" class="yellow fs-5 fontEfootball mt-3"
               >Ảnh tiêu đề:</label
@@ -197,7 +195,6 @@
 
     <script>
       $(document).ready(function () {
-        
         if (localStorage.getItem("loggedIn") === "true") {
           $("#login-item").hide();
           $("#signup-item").hide();
@@ -205,11 +202,10 @@
           $("#logout-btn").show();
           $("#welcome-msg").show();
           $("#username-display").text(localStorage.getItem("username"));
-        }else{
-                  window.location.href = './login.html'; 
-
+        } else {
+          window.location.href = "./login.html";
         }
-       
+
         $("#logout-btn").click(function () {
           localStorage.removeItem("loggedIn");
           localStorage.removeItem("username");
@@ -220,25 +216,48 @@
           $("#logout-btn").hide();
           $("#welcome-msg").hide();
         });
-        var quill = new Quill('#editor', {
-      theme: 'snow',
-      modules: {
-        toolbar: [
-          ['bold', 'italic', 'underline', 'strike', 'color', 'background'],
-          [{ 'size': ['small', false, 'large', 'huge'] }, { 'font': [] }],
-          [{ 'align': [] }, { 'direction': 'rtl' }],
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'indent': '-1'}, { 'indent': '+1' }],
-          ['blockquote', 'code-block'],
-          ['link', 'image', 'video', 'formula'],
-          [{ 'script': 'super'}, { 'script': 'sub' }],
-        ]
-      },
-      formats: [
-        'header', 'font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent', 'link', 'image', 'video', 'color', 'background', 'align',
-        'direction', 'code-block', 'formula', 'script'
-      ]
-    });
+        var quill = new Quill("#editor", {
+          theme: "snow",
+          modules: {
+            toolbar: [
+              ["bold", "italic", "underline", "strike", "color", "background"],
+              [{ size: ["small", false, "large", "huge"] }, { font: [] }],
+              [{ align: [] }, { direction: "rtl" }],
+              [
+                { list: "ordered" },
+                { list: "bullet" },
+                { indent: "-1" },
+                { indent: "+1" },
+              ],
+              ["blockquote", "code-block"],
+              ["link", "image", "video", "formula"],
+              [{ script: "super" }, { script: "sub" }],
+            ],
+          },
+          formats: [
+            "header",
+            "font",
+            "size",
+            "bold",
+            "italic",
+            "underline",
+            "strike",
+            "blockquote",
+            "list",
+            "bullet",
+            "indent",
+            "link",
+            "image",
+            "video",
+            "color",
+            "background",
+            "align",
+            "direction",
+            "code-block",
+            "formula",
+            "script",
+          ],
+        });
         $("#addnewcategory").click(function (event) {
           event.preventDefault();
 
@@ -269,9 +288,8 @@
           event.preventDefault();
           var formData = new FormData(this);
           formData.set("content", quill.root.innerHTML);
-          formData.set("category_id", $("#category").val()); 
+          formData.set("category_id", $("#category").val());
           var user_id = localStorage.getItem("user_id");
-          console.log(user_id);
           if (!user_id) {
             alert("User ID not found in localStorage.");
             return;
@@ -290,7 +308,7 @@
               $("#content").val("");
               $("#category").val("");
               $("#image").val("");
-              quill.root.innerHTML = ""; 
+              quill.root.innerHTML = "";
             },
             error: function (xhr, status, error) {
               alert("Failed to add news");
