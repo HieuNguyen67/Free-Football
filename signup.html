@@ -161,7 +161,7 @@
       const email = $('#email').val();
       const password = $('#password').val();
       $.ajax({
-        url: 'http://localhost:5021/v1/api/admin/register',
+        url: 'https://backend-football.vercel.app/v1/api/admin/register',
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ username, email, password }),

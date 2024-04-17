@@ -81,35 +81,31 @@
       </nav>
 
       <div class="container">
-        <p
-          class="text-center my-5 fw-bold yellow fontEfootball sizetitle"
-          
-        >
+        <p class="text-center my-5 fw-bold yellow fontEfootball sizetitle">
           DUYỆT BÀI ĐĂNG TIN TỨC
         </p>
 
         <div class="container pb-5">
-                      <div class="table-responsive">
-
-          <table
-            style="width: 100%"
-            class="table table-hover table-striped mt-3 py-5"
-          >
-            <thead class="table-dark">
-              <tr class="text-center">
-                <th class="col-2">Ảnh tiêu đề</th>
-                <th>Tiêu đề</th>
-                <th>Nội dung</th>
-                <th>Danh mục</th>
-                <th>Người đăng</th>
-                <th>Ngày đăng</th>
-                <th>Trạng thái</th>
-                <th>Duyệt bài</th>
-              </tr>
-            </thead>
-            <tbody id="news-list"></tbody>
-          </table></div>
-
+          <div class="table-responsive">
+            <table
+              style="width: 100%"
+              class="table table-hover table-striped mt-3 py-5"
+            >
+              <thead class="table-dark">
+                <tr class="text-center">
+                  <th class="col-2">Ảnh tiêu đề</th>
+                  <th>Tiêu đề</th>
+                  <th>Nội dung</th>
+                  <th>Danh mục</th>
+                  <th>Người đăng</th>
+                  <th>Ngày đăng</th>
+                  <th>Trạng thái</th>
+                  <th>Duyệt bài</th>
+                </tr>
+              </thead>
+              <tbody id="news-list"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -138,7 +134,7 @@
         });
 
         $.get(
-          "http://localhost:5021/v1/api/admin/news-with-images-all",
+          "https://backend-football.vercel.app/v1/api/admin/news-with-images-all",
           function (data, status) {
             if (status === "success") {
               var newsList = data;
@@ -200,9 +196,10 @@
                   news.news_id +
                   "'>" +
                   "<button class='btn red text-light'>Xem và duyệt bài";
+                var note = news.note ? news.note : "";
                 listItem +=
                   "</button></a><br><span class='fw-bold'>Ghi chú:</span><br><span class='text-danger fw-bold'>" +
-                  news.note +
+                  note +
                   "</span> </td>";
 
                 listItem += "</tr>";

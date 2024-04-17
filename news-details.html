@@ -32,7 +32,9 @@
       img {
         max-width: 100%;
         height: auto;
-        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
     </style>
   </head>
@@ -124,10 +126,13 @@
         </p>
 
         <div class="row">
-          <div class="col-9 container py-4 rounded" style="background: white">
+          <div
+            class="col-lg-9 col-11 container py-4 rounded"
+            style="background: white"
+          >
             <div class="container" id="news-detail"></div>
           </div>
-          <div class="col-3 container">
+          <div class="col-lg-3 col-12 mt-lg-0 mt-3 container px-3">
             <div style="background: white" class="rounded container">
               <p class="fw-bold fs-5 fonttime pt-3">Tin khác:</p>
               <div id="news-list"></div>
@@ -162,7 +167,7 @@
           var newsId = url.searchParams.get("news_id");
 
           $.get(
-            `http://localhost:5021/v1/api/admin/news/${newsId}`,
+            `https://backend-football.vercel.app/v1/api/admin/news/${newsId}`,
             function (data, status) {
               if (status === "success") {
                 var newsDetails =
@@ -180,12 +185,6 @@
                   data[0].user_name +
                   "</span><hr>";
                 newsDetails += "</p>";
-                if (data[0].image_blob) {
-                  newsDetails +=
-                    '<p class="text-center"><img src="' +
-                    data[0].image_blob +
-                    '" alt="Image" " style="width:40rem;"/></p>';
-                }
 
                 newsDetails += "<p class='mt-4 '>" + data[0].content + "</p>";
                 var newsDetailss = "<span>" + data[0].category_name + "</span>";
@@ -202,7 +201,7 @@
       <script>
         $(document).ready(function () {
           $.get(
-            "http://localhost:5021/v1/api/admin/news-with-images",
+            "https://backend-football.vercel.app/v1/api/admin/news-with-images",
             function (data, status) {
               if (status === "success") {
                 var newsList = data;

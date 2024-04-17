@@ -112,10 +112,7 @@
       </nav>
 
       <div class="container">
-        <p
-          class="text-center my-5 fw-bold yellow fontEfootball"
-          style="font-size: 3.5rem"
-        >
+        <p class="text-center my-5 fw-bold yellow fontEfootball sizetitle">
           THÊM TIN TỨC BÓNG ĐÁ
         </p>
         <form id="add-category-form" style="display: none">
@@ -134,7 +131,7 @@
         </form>
         <form id="add-news-form" enctype="multipart/form-data">
           <div class="row mt-2">
-            <div class="col-4">
+            <div class="col-lg-4 col-12">
               <label for="category" class="yellow fs-5 fontEfootball"
                 >Danh mục:</label
               ><br />
@@ -166,7 +163,7 @@
             <label for="image" class="yellow fs-5 fontEfootball mt-3"
               >Ảnh tiêu đề:</label
             ><br />
-            <div class="col-3">
+            <div class="col-lg-3 col-12">
               <input type="file" id="image" name="image" class="form-control" />
             </div>
           </div>
@@ -180,7 +177,10 @@
 
           <input type="hidden" id="status" name="status" value="pending" />
           <div>
-            <button type="submit" class="btn btn-primary mt-3 col-4 py-3 fs-5">
+            <button
+              type="submit"
+              class="btn bluegardient fw-bold mt-3 col-lg-4 col-12 py-3 fs-5"
+            >
               Thêm tin tức
             </button>
           </div>
@@ -265,7 +265,7 @@
         });
 
         $.get(
-          "http://localhost:5021/v1/api/admin/categories",
+          "https://backend-football.vercel.app/v1/api/admin/categories",
           function (data, status) {
             if (status === "success") {
               var categories = data;
@@ -297,7 +297,7 @@
           formData.set("user_id", user_id);
 
           $.ajax({
-            url: "http://localhost:5021/v1/api/admin/add-news",
+            url: "https://backend-football.vercel.app/v1/api/admin/add-news",
             type: "POST",
             data: formData,
             processData: false,
@@ -308,7 +308,9 @@
               $("#content").val("");
               $("#category").val("");
               $("#image").val("");
+
               quill.root.innerHTML = "";
+              window.location.href = "./news-by-user.html";
             },
             error: function (xhr, status, error) {
               alert("Failed to add news");
@@ -325,7 +327,7 @@
           var categoryName = $("#categoryName").val();
 
           $.ajax({
-            url: "http://localhost:5021/v1/api/admin/add-category",
+            url: "https://backend-football.vercel.app/v1/api/admin/add-category",
             type: "POST",
             data: { name: categoryName },
             success: function (response) {

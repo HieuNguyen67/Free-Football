@@ -115,32 +115,29 @@
         </div>
       </nav>
       <div class="container pb-5">
-        <p
-          class="text-center my-5 fw-bold yellow fontEfootball sizetitle"
-      
-        >
+        <p class="text-center my-5 fw-bold yellow fontEfootball sizetitle">
           DANH SÁCH BÀI ĐĂNG
         </p>
         <div class="pb-5 mb-5">
           <div class="pb-3">
             <div class="table-responsive">
-            <table
-              style="width: 100%"
-              class="table table-hover table-striped mt-3 py-5"
-            >
-              <thead class="table-dark">
-                <tr class="text-center">
-                  <th class="col-2">Ảnh tiêu đề</th>
-                  <th>Tiêu đề</th>
-                  <th>Nội dung</th>
-                  <th>Danh mục</th>
-                  <th>Ngày đăng</th>
-                  <th >Trạng thái</th>
-                  <th>Ghi chú</th>
-                </tr>
-              </thead>
-              <tbody id="news-list"></tbody>
-            </table>
+              <table
+                style="width: 100%"
+                class="table table-hover table-striped mt-3 py-5"
+              >
+                <thead class="table-dark">
+                  <tr class="text-center">
+                    <th class="col-2">Ảnh tiêu đề</th>
+                    <th>Tiêu đề</th>
+                    <th>Nội dung</th>
+                    <th>Danh mục</th>
+                    <th>Ngày đăng</th>
+                    <th>Trạng thái</th>
+                    <th>Ghi chú</th>
+                  </tr>
+                </thead>
+                <tbody id="news-list"></tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -172,7 +169,7 @@
 
           if (userId) {
             $.get(
-              "http://localhost:5021/v1/api/admin/api/news-by-user",
+              "https://backend-football.vercel.app/v1/api/admin/api/news-by-user",
               { user_id: userId },
               function (data, status) {
                 if (status === "success") {
@@ -234,9 +231,11 @@
                       news.news_id +
                       "'>" +
                       "<button class='btn red text-light '>Xem chi tiết bài đăng";
+                    var note = news.note ? news.note : "";
+
                     listItem +=
                       "</button></a><br><span class='fw-bold'>Ghi chú:</span><br><span class='text-danger fw-bold'>" +
-                      news.note +
+                      note +
                       "</span></td>";
 
                     listItem += "</tr>";
