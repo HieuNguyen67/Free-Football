@@ -27,20 +27,14 @@
     ></script>
   </head>
   <body>
-    <div class="boxweb">
-      <!-- <nav
-      class="navbar "
-      style="
-        background-color:#ffff00;
-      "
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="./index.html">
-         
-          <p class="fw-bold ms-2 fontEfootball" style="font-size: 2.3rem;"><i class="fa-solid fa-futbol"></i> Free Football (Soccer) Videos</p>
-        </a>
+    <div class="spinner-backdrop loadingIndicator1" id="spinnerBackdrop">
+      <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
-    </nav> -->
+    </div>
+    <div class="boxweb">
       <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
           <a
@@ -66,116 +60,187 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  aria-current="page"
-                  href="./index.html"
+                <a class="nav-link" aria-current="page" href="./index.html"
                   >Highlights-Livestream</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="./lichthidau.html"
-                  >Lịch thi đấu</a
-                >
+                <a class="nav-link" href="./lichthidau.html">Lịch thi đấu</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./bangxephang.html">Bảng xếp hạng</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="./news.html">Tin tức</a>
+                <a class="nav-link" href="./news.html">Tin tức</a>
               </li>
-             
-             
             </ul>
-             
-              <div class="d-flex">
-                 <a  href="./login.html"><button class=" btn btn-dark" id="login-item" 
-                  >Đăng nhập</button
-                ></a>
-                 <a  href="./signup.html" class="ms-2"><button class=" btn btn-primary" id="signup-item" 
-                  >Đăng ký</button
-                ></a>
-                 <div >
-               <a class="nav-link"
-                  ><span id="welcome-msg" class="me-3" style="display: none"> Hello, <span id="username-display"></span
-                ></span><button class="btn btn-danger"  id="logout-btn" style="display: none">Đăng xuất</button></a
+
+            <div class="d-flex">
+              <a href="./login.html"
+                ><button class="btn btn-dark" id="login-item">
+                  Đăng nhập
+                </button></a
+              >
+              <a href="./signup.html" class="ms-2"
+                ><button class="btn btn-primary" id="signup-item">
+                  Đăng ký
+                </button></a
+              >
+              <div>
+                <a class="nav-link"
+                  ><span id="welcome-msg" class="me-3" style="display: none">
+                    Hello, <span id="username-display"></span></span
+                  ><button
+                    class="btn btn-danger"
+                    id="logout-btn"
+                    style="display: none"
+                  >
+                    Đăng xuất
+                  </button></a
                 >
               </div>
-              </div>
-             
-             
-             
+            </div>
           </div>
         </div>
       </nav>
 
       <div class="container">
-        <p
-          class="text-center my-5 fw-bold yellow fontEfootball sizetitle"
-         
-        >
+        <p class="text-center my-5 fw-bold yellow fontEfootball sizetitle">
           ĐĂNG KÝ
         </p>
 
         <div class="container">
-       <form id="register-form">
-         <div class="row d-flex flex-column pb-5">
-            <div class="col-lg-4 col-12 mx-auto"> <label for="exampleFormControlInput1" class="form-label yellow fontEfootball">Username:</label><input type="text" id="username" name="username" placeholder="Username"  class="form-control mb-3"/></div>
-            <div class="col-lg-4 col-12 mx-auto"> <label for="exampleFormControlInput1" class="form-label yellow fontEfootball">Email:</label><input type="email" id="email" name="email" placeholder="Email"  class="form-control mb-3"/></div>
+          <form id="register-form">
+            <div class="row d-flex flex-column pb-5">
+              <div class="col-lg-4 col-12 mx-auto">
+                <label
+                  for="exampleFormControlInput1"
+                  class="form-label yellow fontEfootball"
+                  >Username:</label
+                ><input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                  class="form-control mb-3"
+                />
+              </div>
+              <div class="col-lg-4 col-12 mx-auto">
+                <label
+                  for="exampleFormControlInput1"
+                  class="form-label yellow fontEfootball"
+                  >Email:</label
+                ><input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  class="form-control mb-3"
+                />
+              </div>
 
-            <div class="col-lg-4 col-12 mx-auto">  <label for="exampleFormControlInput1" class="form-label yellow fontEfootball">Password:</label><input type="password" id="password" name="password" placeholder="Password"  class="form-control mb-lg-5 mb-4"/></div>
-            <div class="col-lg-4 col-12 mx-auto"><button  type="submit" class="btn col-12 mb-3 py-2 text-light" id="login-btn"  style='background: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);border:0px;'>Đăng ký</button></div>
-               <div class="col-lg-4 col-12 mx-auto"><a href="./index.html" class="text-decoration-none yellow"><p class=" text-center fw-bold fontEfootball">< Go back</span></a></div>
-           <div class="col-lg-4 col-12 mx-auto"><hr class="text-light"></div>
-           <div class="col-lg-4 col-12 mx-auto"><p class="text-center text-light fontEfootball">Bạn đã có tài khoản? <a href="./login.html" class="text-decoration-none text-danger fw-bold">Đăng nhập</a></p></div>
-           <div class="col-lg-4 col-12 mx-auto"><p class="text-center  fs-4 pb-5 mb-5" id="error-message" style="color: yellow;display: none;"></p></div>
+              <div class="col-lg-4 col-12 mx-auto">
+                <label
+                  for="exampleFormControlInput1"
+                  class="form-label yellow fontEfootball"
+                  >Password:</label
+                ><input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  class="form-control mb-lg-5 mb-4"
+                />
+              </div>
+              <div class="col-lg-4 col-12 mx-auto">
+                <button
+                  type="submit"
+                  class="btn col-12 mb-3 py-2 text-light"
+                  id="login-btn"
+                  style="
+                    background: linear-gradient(
+                      147deg,
+                      #ffe53b 0%,
+                      #ff2525 74%
+                    );
+                    border: 0px;
+                  "
+                >
+                  Đăng ký
+                </button>
+              </div>
+              <div class="col-lg-4 col-12 mx-auto">
+                <a href="./index.html" class="text-decoration-none yellow"
+                  ><p class="text-center fw-bold fontEfootball">< Go back</p></a
+                >
+              </div>
+              <div class="col-lg-4 col-12 mx-auto">
+                <hr class="text-light" />
+              </div>
+              <div class="col-lg-4 col-12 mx-auto">
+                <p class="text-center text-light fontEfootball">
+                  Bạn đã có tài khoản?
+                  <a
+                    href="./login.html"
+                    class="text-decoration-none text-danger fw-bold"
+                    >Đăng nhập</a
+                  >
+                </p>
+              </div>
+              <div class="col-lg-4 col-12 mx-auto">
+                <p
+                  class="text-center fs-4 pb-5 mb-5"
+                  id="error-message"
+                  style="color: yellow; display: none"
+                ></p>
+              </div>
 
-
-  <div id="error-message" style="color: red;display: none;"></div>
-</form>
-         
-
-
-          </div>
+              <div id="error-message" style="color: red; display: none"></div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
     <script>
-      $(document).ready(function() {
-            if (localStorage.getItem("loggedIn") === "true") {
+      $(document).ready(function () {
+        if (localStorage.getItem("loggedIn") === "true") {
           $("#login-item").hide();
           $("#signup-item").hide();
           $("#logout-btn").show();
           $("#welcome-msg").show();
           $("#username-display").text(localStorage.getItem("username"));
         }
-        if (localStorage.getItem('loggedIn') === 'true') {
-      window.location.href = './index.html'; 
-    }
-     
-   $('#register-form').submit(function(event) {
-      event.preventDefault();
-      const username = $('#username').val();
-      const email = $('#email').val();
-      const password = $('#password').val();
-      $.ajax({
-        url: 'https://backend-football.vercel.app/v1/api/admin/register',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ username, email, password }),
-        success: function(response) {
-          alert('Registration successful');
-          window.location.href = './login.html'; 
-        },
-        error: function(xhr, status, error) {
-          const errorMessage = xhr.responseJSON.error;
-          $('#error-message').text(errorMessage).show();
+        if (localStorage.getItem("loggedIn") === "true") {
+          window.location.href = "./index.html";
         }
+
+        $("#register-form").submit(function (event) {
+          event.preventDefault();
+          const username = $("#username").val();
+          const email = $("#email").val();
+          const password = $("#password").val();
+          $(".loadingIndicator1").show();
+
+          $.ajax({
+            url: "https://backend-football.vercel.app/v1/api/admin/register",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ username, email, password }),
+            success: function (response) {
+              $(".loadingIndicator1").hide();
+
+              alert("Registration successful");
+              window.location.href = "./login.html";
+            },
+            error: function (xhr, status, error) {
+              const errorMessage = xhr.responseJSON.error;
+              $("#error-message").text(errorMessage).show();
+            },
+          });
+        });
       });
-    });
-  });
     </script>
   </body>
 </html>

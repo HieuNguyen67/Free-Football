@@ -120,6 +120,14 @@
           >
         </p>
 
+        <div class="spinner-backdrop loadingIndicator1" id="spinnerBackdrop">
+          <div class="position-absolute top-50 start-50 translate-middle">
+            <div class="spinner-border text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+
         <div
           class="container py-4 rounded"
           style="background: white; width: 100%"
@@ -147,10 +155,12 @@
             $("#logout-btn").hide();
             $("#welcome-msg").hide();
           });
+          $(".loadingIndicator1").show();
           $.get(
             "https://backend-football.vercel.app/v1/api/admin/news-with-images",
             function (data, status) {
               if (status === "success") {
+                $(".loadingIndicator1").hide();
                 var newsList = data;
                 newsList.forEach(function (news) {
                   var listItem = "<hr>";

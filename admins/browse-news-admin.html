@@ -44,6 +44,13 @@
     ></script>
   </head>
   <body>
+    <div class="spinner-backdrop loadingIndicator1" id="spinnerBackdrop">
+      <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
     <div class="boxweb">
       <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
@@ -163,10 +170,14 @@
         var url = new URL(currentUrl);
 
         var newsId = url.searchParams.get("news_id");
+        $(".loadingIndicator1").show();
+
         $.get(
           `https://backend-football.vercel.app/v1/api/admin/news/${newsId}`,
           function (data, status) {
             if (status === "success") {
+              $(".loadingIndicator1").hide();
+
               var newsDetails =
                 '<h1 class="fw-bold fonttime">' + data[0].title + "</h1>";
               var date = new Date(data[0].created_at);
