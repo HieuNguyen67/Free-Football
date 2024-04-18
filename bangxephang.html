@@ -220,8 +220,11 @@
                 "X-RapidAPI-Host": "football-web-pages1.p.rapidapi.com",
               },
             };
+            $(".loadingIndicator1").show();
 
             $.ajax(settings).done(function (response) {
+              $(".loadingIndicator1").hide();
+
               $.each(response.competitions, function (index, item) {
                 const fullname = item.full - name;
                 var option = $("<option>").val(item.id).text(item["full-name"]);

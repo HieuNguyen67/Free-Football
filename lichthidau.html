@@ -28,13 +28,13 @@
   </head>
   <body>
     <div class="boxweb">
-       <div class="spinner-backdrop loadingIndicator1" id="spinnerBackdrop">
-      <div class="position-absolute top-50 start-50 translate-middle">
-        <div class="spinner-border text-light" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="spinner-backdrop loadingIndicator1" id="spinnerBackdrop">
+        <div class="position-absolute top-50 start-50 translate-middle">
+          <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
       </div>
-    </div>
       <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
           <a
@@ -143,7 +143,7 @@
 
           <div class="pb-5">
             <div id="titlegiai"></div>
-            <div class="col-12 col-lg-4  pt-2">
+            <div class="col-12 col-lg-4 pt-2">
               <p class="fw-bold yellow fs-5 fontEfootball">Tìm kiếm:</p>
               <input
                 id="myInput"
@@ -207,8 +207,11 @@
               "X-RapidAPI-Host": "football-web-pages1.p.rapidapi.com",
             },
           };
+          $(".loadingIndicator1").show();
 
           $.ajax(settings).done(function (response) {
+            $(".loadingIndicator1").hide();
+
             $.each(response.competitions, function (index, item) {
               const fullname = item.full - name;
               var option = $("<option>").val(item.id).text(item["full-name"]);
@@ -235,7 +238,7 @@
                 "X-RapidAPI-Host": "football-web-pages1.p.rapidapi.com",
               },
             };
-          $(".loadingIndicator1").show();
+            $(".loadingIndicator1").show();
 
             $.ajax(settings).done(function (response) {
               $("#myInput").on("keyup", function () {
@@ -246,7 +249,7 @@
                   );
                 });
               });
-          $(".loadingIndicator1").hide();
+              $(".loadingIndicator1").hide();
               var dataContainer = $("#bangxephang");
               dataContainer.empty();
               var dataContainer1 = $("#titlegiai");
