@@ -212,7 +212,7 @@
           $.ajax(settings).done(function (response) {
             $(".loadingIndicator1").hide();
 
-            $.each(response.competitions, function (index, item) {
+            $.each(response, function (index, item) {
               const fullname = item.full - name;
               var option = $("<option>").val(item.id).text(item["full-name"]);
               $("#isoSelect").append(option);
