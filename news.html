@@ -135,26 +135,14 @@
           <div id="news-list" class="mx-lg-3 mx-2"></div>
         </div>
       </div>
-      <script>
+      <script src="./script/logout.js"></script>
+            <script src="./script/loggedIn.js"></script>
+
+      <script >
         $(document).ready(function () {
-          if (localStorage.getItem("loggedIn") === "true") {
-            $("#login-item").hide();
-            $("#signup-item").hide();
+   
+         
 
-            $("#logout-btn").show();
-            $("#welcome-msg").show();
-            $("#username-display").text(localStorage.getItem("username"));
-          }
-          $("#logout-btn").click(function () {
-            localStorage.removeItem("loggedIn");
-            localStorage.removeItem("username");
-            localStorage.removeItem("user_id");
-
-            $("#login-item").show();
-            $("#signup-item").show();
-            $("#logout-btn").hide();
-            $("#welcome-msg").hide();
-          });
           $(".loadingIndicator1").show();
           $.get(
             "https://backend-football.vercel.app/v1/api/admin/news-with-images",

@@ -137,6 +137,8 @@
           </div>
         </div>
       </div>
+            <script src="./script/logout.js"></script>
+
       <script>
         $(document).ready(function () {
           if (localStorage.getItem("loggedIn") === "true") {
@@ -149,16 +151,7 @@
           } else {
             window.location.href = "./login.html";
           }
-          $("#logout-btn").click(function () {
-            localStorage.removeItem("loggedIn");
-            localStorage.removeItem("username");
-            localStorage.removeItem("user_id");
-
-            $("#login-item").show();
-            $("#signup-item").show();
-            $("#logout-btn").hide();
-            $("#welcome-msg").hide();
-          });
+        
 
           var userId = localStorage.getItem("user_id");
    $(".loadingIndicator1").show();

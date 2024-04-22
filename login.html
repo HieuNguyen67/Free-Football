@@ -189,15 +189,12 @@
         </div>
       </div>
     </div>
+          <script src="./script/logout.js"></script>
+      <script src="./script/loggedIn.js"></script>
+
     <script>
       $(document).ready(function () {
-        if (localStorage.getItem("loggedIn") === "true") {
-          $("#login-item").hide();
-          $("#signup-item").hide();
-          $("#logout-btn").show();
-          $("#welcome-msg").show();
-          $("#username-display").text(localStorage.getItem("username"));
-        }
+ 
         if (localStorage.getItem("loggedIn") === "true") {
           window.location.href = "./index.html";
         }
@@ -234,17 +231,7 @@
             },
           });
         });
-        $("#logout-btn").click(function () {
-          localStorage.removeItem("loggedIn");
-          localStorage.removeItem("username");
-          localStorage.removeItem("user_id");
-
-          $("#login-item").show();
-          $("#signup-item").show();
-
-          $("#logout-btn").hide();
-          $("#welcome-msg").hide();
-        });
+       
       });
     </script>
   </body>

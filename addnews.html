@@ -192,6 +192,7 @@
       </div>
     </div>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+      <script src="./script/logout.js"></script>
 
     <script>
       $(document).ready(function () {
@@ -206,16 +207,7 @@
           window.location.href = "./login.html";
         }
 
-        $("#logout-btn").click(function () {
-          localStorage.removeItem("loggedIn");
-          localStorage.removeItem("username");
-          localStorage.removeItem("user_id");
-
-          $("#login-item").show();
-          $("#signup-item").show();
-          $("#logout-btn").hide();
-          $("#welcome-msg").hide();
-        });
+        
         var quill = new Quill("#editor", {
           theme: "snow",
           modules: {
