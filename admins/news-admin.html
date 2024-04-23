@@ -28,12 +28,12 @@
   </head>
   <body>
     <div class="spinner-backdrop loadingIndicator1" id="spinnerBackdrop">
-        <div class="position-absolute top-50 start-50 translate-middle">
-          <div class="spinner-border text-light" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+      <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
+    </div>
     <div class="boxweb">
       <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
@@ -139,14 +139,13 @@
           $("#logout-btn").hide();
           $("#welcome-msg").hide();
         });
-                            $(".loadingIndicator1").show();
-
+        $(".loadingIndicator1").show();
 
         $.get(
           "https://backend-football.vercel.app/v1/api/admin/news-with-images-all",
           function (data, status) {
             if (status === "success") {
-                                  $(".loadingIndicator1").hide();
+              $(".loadingIndicator1").hide();
 
               var newsList = data;
 

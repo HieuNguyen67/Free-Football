@@ -27,13 +27,6 @@
     ></script>
   </head>
   <body>
-    <div class="spinner-backdrop loadingIndicator1" id="spinnerBackdrop">
-      <div class="position-absolute top-50 start-50 translate-middle">
-        <div class="spinner-border text-light" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    </div>
     <div class="boxweb">
       <nav class="navbar navbar-expand-lg" style="background: #ffff00">
         <div class="container-fluid">
@@ -174,7 +167,6 @@
           event.preventDefault();
           const usernameOrEmail = $("#usernameOrEmail").val();
           const password = $("#password").val();
-          $(".loadingIndicator1").show();
 
           $.ajax({
             url: "https://backend-football.vercel.app/v1/api/admin/loginadmin",
@@ -182,8 +174,6 @@
             contentType: "application/json",
             data: JSON.stringify({ usernameOrEmail, password }),
             success: function (response) {
-              $(".loadingIndicator1").hide();
-
               localStorage.setItem("loggedInAdmin", "true");
 
               localStorage.setItem("admin_id", response.admin_id);
