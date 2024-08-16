@@ -175,7 +175,6 @@
             data: JSON.stringify({ usernameOrEmail, password }),
             success: function (response) {
               localStorage.setItem("loggedInAdmin", "true");
-
               localStorage.setItem("admin_id", response.admin_id);
               localStorage.setItem("usernameadmin", response.usernameadmin);
 

@@ -196,7 +196,7 @@
             const settings = {
               async: true,
               crossDomain: true,
-              url: "https://football-web-pages1.p.rapidapi.com/competitions.json",
+              url: "https://football-web-pages1.p.rapidapi.com/competitions.json?include=rounds",
               method: "GET",
               headers: {
                 "X-RapidAPI-Key":
@@ -210,7 +210,7 @@
               console.log(response);
               $(".loadingIndicator1").hide();
 
-              $.each(response, function (index, item) {
+              $.each(response.competitions, function (index, item) {
                 const fullname = item.full - name;
                 var option = $("<option>").val(item.id).text(item["full-name"]);
                 $("#isoSelect").append(option);
